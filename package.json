@@ -21,7 +21,6 @@
   "homepage": "https://github.com/torch2424/wasm-matrix#readme",
   "dependencies": {},
   "devDependencies": {
-    "assemblyscript": "github:AssemblyScript/assemblyscript",
-    "wasa": "git+https://github.com/torch2424/wasa.git"
+    "assemblyscript": "github:AssemblyScript/assemblyscript"
   }
 }
