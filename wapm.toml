@@ -1,0 +1,15 @@
+[package]
+name = "wasm-matrix"
+version = "0.0.1"
+description = "the matrix"
+readme = "README.md"
+repository = "https://github.com/torch2424/wasm-matrix"
+
+[[module]]
+name = "wasm-matrix"
+source = "dist/wasm32-wasi/wasm-matrix.wasm"
+abi = "none"
+
+[[command]]
+name = "wasm-matrix"
+module = "wasm-matrix"

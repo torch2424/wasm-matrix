@@ -1,0 +1,26 @@
+{
+  "name": "wasm-matrix",
+  "version": "0.0.1",
+  "description": "What if I told you",
+  "main": "index.js",
+  "dependencies": {
+    "assemblyscript": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torch2424/wasm-matrix.git"
+  },
+  "author": "Aaron turner",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/torch2424/wasm-matrix/issues"
+  },
+  "homepage": "https://github.com/torch2424/wasm-matrix#readme"
+}
