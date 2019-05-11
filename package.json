@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "What if I told you",
   "main": "index.js",
-  "dependencies": {
-    "assemblyscript": "^0.6.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run asbuild:untouched && npm run asbuild:optimized",
@@ -22,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/torch2424/wasm-matrix/issues"
   },
-  "homepage": "https://github.com/torch2424/wasm-matrix#readme"
+  "homepage": "https://github.com/torch2424/wasm-matrix#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
+    "wasa": "git+https://github.com/torch2424/wasa.git"
+  }
 }
