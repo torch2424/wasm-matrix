@@ -32,11 +32,17 @@ class Droplet {
   column: i32;
   row: i32;
   characterString: string;
+  frameSkip: i32;
+  currentFrame: i32;
   speed: i32;
   height: i32;
 }
 
 const droplets: Droplet[] = [];
+
+function getTimeCounter(): i32 {
+  return floor<f64>(Date.now() / 100000) as i32;
+}
 
 export function _start(): void {
 
@@ -45,16 +51,18 @@ export function _start(): void {
     droplets.push(createDroplet(i));
   }
 
+  let lastTime = getTimeCounter() - 5;
 
   while (true) {
 
-    // Has a precision of: 100000
-    let currentTime: f64 = Date.now();
+    let currentTime: i32 = getTimeCounter();
 
     // See if it is time to update
-    if (currentTime > 100000) {
+    if (abs(lastTime - currentTime) < 1) {
       continue;
     }
+
+    lastTime = currentTime;
 
     // Update our droplets
     for (let i = 0; i < droplets.length; i++) {
@@ -85,8 +93,9 @@ function createDroplet(column: i32): Droplet {
   let droplet: Droplet = new Droplet();
   droplet.column = column;
   droplet.row = 0;
-  droplet.height = (getRandomNumber() % 10) + 1;
+  droplet.height = (getRandomNumber() % 10) + 3;
   droplet.speed = (getRandomNumber() % 3) + 1;
+  droplet.frameSkip = (getRandomNumber() % 2) + 1;
 
   droplet.characterString = "";
   for (let i = 0; i < droplet.height; i++) {
@@ -97,6 +106,14 @@ function createDroplet(column: i32): Droplet {
 }
 
 function updateDroplet(droplet: Droplet): void {
+
+  droplet.currentFrame++;
+
+  if (droplet.currentFrame < droplet.frameSkip) {
+    return;
+  }
+
+  droplet.currentFrame = 0;
 
   // Increase the droplet row
   droplet.row += droplet.speed;
