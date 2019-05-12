@@ -4,7 +4,7 @@
 
 import "allocator/arena";
 import "collector/itcm";
-import {Console, Random, Date, Environ} from './wasa';
+import {Console, Random, Date} from './wasa';
 
 // Ansi Color Codes
 let GREEN: string = "\u001b[32m";
@@ -46,14 +46,6 @@ function getTimeCounter(): i32 {
 
 export function _start(): void {
 
-  let env = new Environ();
-  let home = env.get("LINES");
-
-  Console.log("Hello");
-
-  Console.log(home);
-
-  //return;
 
   // Create all of our droplets
   for (let i = 0; i < 20; i++) {
