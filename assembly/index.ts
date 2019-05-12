@@ -2,18 +2,145 @@
 
 // https://github.com/WebAssembly/WASI/issues/19
 
-import {Console} from './wasa';
+import "allocator/arena";
+import "collector/itcm";
+import {Console, Random, Date} from './wasa';
+
+// Ansi Color Codes
+let GREEN: string = "\u001b[32m";
+let WHITE: string = "\u001b[37m";
+let RESET: string = "\u001b[0m";
+
+// Ansi Cursor Codes
+let CTL_ESC: string = "\u001b["; 
+
+// Matrix Characters
+let CHARACTERS: string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
+
+// https://github.com/AssemblyScript/assemblyscript/blob/master/std/assembly/env.ts
+@global
+export function wasiabort(
+  message: string | null = "",
+  fileName: string | null = "",
+  lineNumber: u32 = 0,
+  columnNumber: u32 = 0
+): void {
+  Console.log(message);
+}
+
+class Droplet {
+  column: i32;
+  row: i32;
+  characterString: string;
+  speed: i32;
+  height: i32;
+}
+
+const droplets: Droplet[] = [];
 
 export function _start(): void {
-  printGreen();
-  Console.log("Hello World!");
-  printReset();
+
+  // Create all of our droplets
+  for (let i = 0; i < 20; i++) {
+    droplets.push(createDroplet(i));
+  }
+
+
+  while (true) {
+
+    // Has a precision of: 100000
+    let currentTime: f64 = Date.now();
+
+    // See if it is time to update
+    if (currentTime > 100000) {
+      continue;
+    }
+
+    // Update our droplets
+    for (let i = 0; i < droplets.length; i++) {
+      updateDroplet(droplets[i]);
+    }
+
+    // Clear the screen
+    flushConsole();
+
+    // Draw the droplets
+    for (let i = 0; i < droplets.length; i++) {
+      drawDroplet(droplets[i]);
+    }
+
+    // Done!
+  }
 }
 
-function printGreen(): void {
-  Console.log("\u001b[32m");
+function printColor(value: string, color: string): void {
+  Console.write(color + value + RESET, false);
 }
 
-function printReset(): void {
-  Console.log("\u001b[0m");
+function flushConsole(): void {
+  Console.write("\u001b[2J", false)
+}
+
+function createDroplet(column: i32): Droplet {
+  let droplet: Droplet = new Droplet();
+  droplet.column = column;
+  droplet.row = 0;
+  droplet.height = (getRandomNumber() % 10) + 1;
+  droplet.speed = (getRandomNumber() % 3) + 1;
+
+  droplet.characterString = "";
+  for (let i = 0; i < droplet.height; i++) {
+    droplet.characterString += getRandomCharacter();
+  }
+
+  return droplet;
+}
+
+function updateDroplet(droplet: Droplet): void {
+
+  // Increase the droplet row
+  droplet.row += droplet.speed;
+
+  // Remove the the moved characters
+  droplet.characterString = droplet.characterString.slice(droplet.speed, droplet.characterString.length);
+
+  // pop on a new character
+  for (let i = droplet.characterString.length; i < droplet.height; i++) {
+    droplet.characterString += getRandomCharacter();
+  }
+
+}
+
+function drawDroplet(droplet: Droplet): void {
+
+  for(let i = 0; i < droplet.characterString.length; i++) {
+    // Move the cursor to the correct position
+    moveCursorToPosition(droplet.column, droplet.row + i);
+    
+
+    // Get our color
+    let color: string = GREEN;
+    if (i === droplet.characterString.length - 1) {
+      color = WHITE;
+    }
+
+    // Draw the character
+    printColor(droplet.characterString.slice(i, i + 1), color);
+  }
+}
+
+// https://github.com/nojvek/matrix-rain/blob/master/ansi.js
+function moveCursorToPosition(column: i32, row: i32): void {
+  let cursorPosition: string = CTL_ESC + row.toString() + ";" + column.toString() + "H";
+  Console.write(CTL_ESC + row.toString() + ";" + column.toString() + "H", false)
+}
+
+function getRandomNumber(): i32 {
+  return Random.randomBytes(1)[0];
+}
+
+function getRandomCharacter(): string {
+  let index: i32 = getRandomNumber() % CHARACTERS.length;
+  let newCharacter: string = CHARACTERS.slice(index, index + 1);
+  return newCharacter;
 }
