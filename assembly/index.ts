@@ -4,7 +4,7 @@
 
 import "allocator/arena";
 import "collector/itcm";
-import {Console, Random, Date} from './wasa';
+import {Console, IO, Random, Date} from './wasa';
 
 // Ansi Color Codes
 let GREEN: string = "\u001b[32m";
@@ -46,24 +46,31 @@ function getTimeCounter(): i32 {
 
 export function _start(): void {
 
+  flushConsole();
+
+  moveCursorToPosition(10000, 100000);
+  
+  Console.log("\u001b[6n");
+
+  sleep(3);
+
+  let output: string = IO.readString(1);
+
+  Console.log("hi");
+
+  Console.log(output.length.toString());
+
+  Console.log("yo" + output.slice(1, output.length));
+
+  return;
+
 
   // Create all of our droplets
   for (let i = 0; i < 20; i++) {
     droplets.push(createDroplet(i));
   }
 
-  let lastTime = getTimeCounter() - 5;
-
   while (true) {
-
-    let currentTime: i32 = getTimeCounter();
-
-    // See if it is time to update
-    if (abs(lastTime - currentTime) < 1) {
-      continue;
-    }
-
-    lastTime = currentTime;
 
     // Update our droplets
     for (let i = 0; i < droplets.length; i++) {
@@ -77,6 +84,8 @@ export function _start(): void {
     for (let i = 0; i < droplets.length; i++) {
       drawDroplet(droplets[i]);
     }
+
+    sleep(1);
 
     // Done!
   }
@@ -161,4 +170,24 @@ function getRandomCharacter(): string {
   let index: i32 = getRandomNumber() % CHARACTERS.length;
   let newCharacter: string = CHARACTERS.slice(index, index + 1);
   return newCharacter;
+}
+
+function sleep(sleepTicks: i32): void {
+  let lastTime: i32 = getTimeCounter();
+
+  let shouldLoop: boolean = true;
+
+  while (shouldLoop) {
+
+    let currentTime: i32 = getTimeCounter();
+
+    Console.log(currentTime.toString() + lastTime.toString());
+
+    // See if it is time to update
+    if (abs(lastTime - currentTime) < sleepTicks) {
+      shouldLoop = false;
+    }
+  }
+
+  Console.log("done sleeping");
 }
