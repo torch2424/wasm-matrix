@@ -7,7 +7,7 @@ repository = "https://github.com/torch2424/wasm-matrix"
 
 [[module]]
 name = "wasm-matrix"
-source = "build/untouched.wasm"
+source = "build/optimized.wasm"
 abi = "none"
 
 [[command]]

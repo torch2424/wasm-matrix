@@ -1,4 +1,5 @@
 // THIS CODE IS FROM ANOTHER PROJECT!!!
+// Slightly modified for specific uses
 // https://github.com/jedisct1/wasa 
 // This is a slimmed down version of their code
 // To help with module size, compilation errors,

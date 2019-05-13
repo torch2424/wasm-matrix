@@ -8,7 +8,7 @@ package_name = "wasm-matrix"
 source = "local"
 resolved = "local"
 abi = "none"
-entry = "build/untouched.wasm"
+entry = "build/optimized.wasm"
 [commands.wasm-matrix]
 name = "wasm-matrix"
 package_name = "wasm-matrix"
