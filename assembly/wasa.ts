@@ -55,6 +55,7 @@ export class IO {
     fd_write(fd, iov, 1, written_ptr);
     memory.free(written_ptr);
     memory.free(data_buf);
+    memory.free(iov);
   }
 
   /**
@@ -77,6 +78,7 @@ export class IO {
     fd_write(fd, iov, 1, written_ptr);
     memory.free(written_ptr);
     memory.free(s_utf8);
+    memory.free(iov);
   }
 
   /**
@@ -98,6 +100,8 @@ export class IO {
     fd_write(fd, iov, 2, written_ptr);
     memory.free(written_ptr);
     memory.free(s_utf8);
+    memory.free(iov);
+    memory.free(lf);
   }
 
   /**
@@ -122,6 +126,7 @@ export class IO {
     }
     memory.free(read_ptr);
     memory.free(data_partial);
+    memory.free(iov);
 
     if (read <= 0) {
       return null;
@@ -157,6 +162,7 @@ export class IO {
     }
     memory.free(read_ptr);
     memory.free(data_partial);
+    memory.free(iov);
 
     if (read < 0) {
       return null;
@@ -261,6 +267,63 @@ export class Date {
     let unix_ts = load<u64>(time_ptr);
     memory.free(time_ptr);
     return unix_ts as f64 / 1000.0;
+  }
+}
+
+class StringUtils {
+  static fromCString(cstring: usize): string {
+    let size = 0;
+    while (load<u8>(cstring + size) != 0) {
+      size++;
+    }
+    return String.fromUTF8(cstring, size);
+  }
+}
+
+export class CommandLine {
+  args: Array<String>;
+
+  constructor() {
+    this.args = [];
+    let count_and_size = memory.allocate(2 * sizeof<usize>());
+    let ret = args_sizes_get(count_and_size, count_and_size + 4);
+    if (ret != errno.SUCCESS) {
+      abort();
+    }
+    let count = load<usize>(count_and_size);
+    let size = load<usize>(count_and_size + sizeof<usize>());
+    let env_ptrs = memory.allocate((count + 1) * sizeof<usize>());
+    let buf = memory.allocate(size);
+    if (args_get(env_ptrs, buf) != errno.SUCCESS) {
+      abort();
+    }
+    for (let i: usize = 0; i < count; i++) {
+      let env_ptr = load<usize>(env_ptrs + i * sizeof<usize>());
+      let arg = StringUtils.fromCString(env_ptr);
+      this.args.push(arg);
+    }
+    memory.free(buf);
+    memory.free(env_ptrs);
+    memory.free(count_and_size);
+  }
+
+  /**
+   * Return all the command-line arguments
+   */
+  all(): Array<String> {
+    return this.args;
+  }
+
+  /**
+   * Return the i-th command-ine argument
+   * @param i index
+   */
+  get(i: usize): string | null {
+    let args_len: usize = this.args[0].length;
+    if (i < args_len) {
+      return this.args[i];
+    }
+    return null;
   }
 }
 
