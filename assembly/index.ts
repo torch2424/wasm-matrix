@@ -45,22 +45,47 @@ function getTimeCounter(): i32 {
 }
 
 export function _start(): void {
+  
 
+  // Get the size of the terminal
+  // https://stackoverflow.com/questions/16026858/reading-the-device-status-report-ansi-escape-sequence-reply
+  // http://www.cse.psu.edu/~kxc104/class/cmpen472/11f/hw/hw7/vt100ansi.htm
+  // https://stackoverflow.com/questions/16026858/reading-the-device-status-report-ansi-escape-sequence-reply
   flushConsole();
 
   moveCursorToPosition(10000, 100000);
   
+  // Send the command to wait for the response
   Console.log("\u001b[6n");
+  flushConsole();
 
-  sleep(3);
+  // Yay! This is working!
+  // https://www.sciencebuddies.org/science-fair-projects/references/table-of-8-bit-ascii-character-codes
+  let shouldRead: boolean = true;
+  let output: Array<u8> = [];
+  while (shouldRead) {
+    let readResponse: Array<u8> = IO.read(1) as Array<u8>;
+    
+    if (readResponse.length > 0) {
+      Console.log(readResponse.toString());
+      Console.log("Yooo");
 
-  let output: string = IO.readString(1);
+      for (let i = 0; i < readResponse.length; i++) {
+        output.push(readResponse[i]);
+      }
+    }
+  }
 
-  Console.log("hi");
+  Console.log("");
+  Console.log("yo: " + output.toString());
 
-  Console.log(output.length.toString());
+  // Convert to an actual string
+  let convertedString: string = "";
+  for (let i = 1; i < output.length; i++) {
+    convertedString += String.fromCharCode(output[i] as i32);
+  }
 
-  Console.log("yo" + output.slice(1, output.length));
+  Console.log("Converted: " + convertedString);
 
   return;
 
@@ -181,13 +206,9 @@ function sleep(sleepTicks: i32): void {
 
     let currentTime: i32 = getTimeCounter();
 
-    Console.log(currentTime.toString() + lastTime.toString());
-
     // See if it is time to update
-    if (abs(lastTime - currentTime) < sleepTicks) {
+    if (abs(lastTime - currentTime) > sleepTicks) {
       shouldLoop = false;
     }
   }
-
-  Console.log("done sleeping");
 }
