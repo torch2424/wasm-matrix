@@ -46,17 +46,23 @@ function getTimeCounter(): i32 {
 }
 
 export function _start(): void {
+  
+  // Set to the default linux terminal size
+  let columns: i32 = 80;
+  let rows: i32 = 24;
+
+  // TODO: Get rows and columns from the command line
 
   // Create all of our droplets
-  for (let i = 0; i < 20; i++) {
-    droplets.push(createDroplet(i));
+  for (let i = 0; i < columns; i++) {
+    droplets.push(createDroplet(i, rows));
   }
 
   while (true) {
 
     // Update our droplets
     for (let i = 0; i < droplets.length; i++) {
-      updateDroplet(droplets[i]);
+      updateDroplet(droplets[i], rows);
     }
 
     // Clear the screen
@@ -64,10 +70,10 @@ export function _start(): void {
 
     // Draw the droplets
     for (let i = 0; i < droplets.length; i++) {
-      drawDroplet(droplets[i]);
+      drawDroplet(droplets[i], rows);
     }
 
-    sleep(7);
+    sleep(11);
 
     // Done!
   }
@@ -81,11 +87,11 @@ function flushConsole(): void {
   Console.write("\u001b[2J", false)
 }
 
-function createDroplet(column: i32): Droplet {
+function createDroplet(column: i32, rows: i32): Droplet {
   let droplet: Droplet = new Droplet();
   droplet.column = column;
   droplet.row = 0;
-  droplet.height = (getRandomNumber() % 10) + 3;
+  droplet.height = (getRandomNumber() % (rows / 2)) + 3;
   droplet.speed = (getRandomNumber() % 3) + 1;
   droplet.frameSkip = (getRandomNumber() % 2) + 1;
 
@@ -97,7 +103,7 @@ function createDroplet(column: i32): Droplet {
   return droplet;
 }
 
-function updateDroplet(droplet: Droplet): void {
+function updateDroplet(droplet: Droplet, rows: i32): void {
 
   droplet.currentFrame++;
 
@@ -110,6 +116,10 @@ function updateDroplet(droplet: Droplet): void {
   // Increase the droplet row
   droplet.row += droplet.speed;
 
+  if (droplet.row >= droplet.height + rows) {
+    droplet.row = 0 - droplet.height;
+  }
+
   // Remove the the moved characters
   droplet.characterString = droplet.characterString.slice(droplet.speed, droplet.characterString.length);
 
@@ -117,24 +127,28 @@ function updateDroplet(droplet: Droplet): void {
   for (let i = droplet.characterString.length; i < droplet.height; i++) {
     droplet.characterString += getRandomCharacter();
   }
-
 }
 
-function drawDroplet(droplet: Droplet): void {
+function drawDroplet(droplet: Droplet, rows: i32): void {
 
   for(let i = 0; i < droplet.characterString.length; i++) {
-    // Move the cursor to the correct position
-    moveCursorToPosition(droplet.column, droplet.row + i);
-    
 
-    // Get our color
-    let color: string = GREEN;
-    if (i === droplet.characterString.length - 1) {
-      color = WHITE;
+    let cursorRow = droplet.row + i;
+
+    if (cursorRow >= 0 && cursorRow <= rows) {
+      // Move the cursor to the correct position
+      moveCursorToPosition(droplet.column, cursorRow);
+
+
+      // Get our color
+      let color: string = GREEN;
+      if (i === droplet.characterString.length - 1) {
+        color = WHITE;
+      }
+
+      // Draw the character
+      printColor(droplet.characterString.slice(i, i + 1), color);
     }
-
-    // Draw the character
-    printColor(droplet.characterString.slice(i, i + 1), color);
   }
 }
 
