@@ -1,7 +1,9 @@
-// Required stuff from wasa
-// https://github.com/jedisct1/wasa
+// THIS CODE IS FROM ANOTHER PROJECT!!!
+// https://github.com/jedisct1/wasa 
+// This is a slimmed down version of their code
+// To help with module size, compilation errors,
+// and ease of use.
 
-import "allocator/arena";
 import {
   errno,
   clockid,

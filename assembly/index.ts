@@ -18,6 +18,7 @@ let CTL_ESC: string = "\u001b[";
 let CHARACTERS: string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
 
 // https://github.com/AssemblyScript/assemblyscript/blob/master/std/assembly/env.ts
+// https://github.com/AssemblyScript/assemblyscript/issues/388
 @global
 export function wasiabort(
   message: string | null = "",
@@ -25,7 +26,7 @@ export function wasiabort(
   lineNumber: u32 = 0,
   columnNumber: u32 = 0
 ): void {
-  Console.log(message);
+  Console.error(message);
 }
 
 class Droplet {
@@ -41,54 +42,10 @@ class Droplet {
 const droplets: Droplet[] = [];
 
 function getTimeCounter(): i32 {
-  return floor<f64>(Date.now() / 100000) as i32;
+  return floor<f64>(Date.now() / 10000) as i32;
 }
 
 export function _start(): void {
-  
-
-  // Get the size of the terminal
-  // https://stackoverflow.com/questions/16026858/reading-the-device-status-report-ansi-escape-sequence-reply
-  // http://www.cse.psu.edu/~kxc104/class/cmpen472/11f/hw/hw7/vt100ansi.htm
-  // https://stackoverflow.com/questions/16026858/reading-the-device-status-report-ansi-escape-sequence-reply
-  flushConsole();
-
-  moveCursorToPosition(10000, 100000);
-  
-  // Send the command to wait for the response
-  Console.log("\u001b[6n");
-  flushConsole();
-
-  // Yay! This is working!
-  // https://www.sciencebuddies.org/science-fair-projects/references/table-of-8-bit-ascii-character-codes
-  let shouldRead: boolean = true;
-  let output: Array<u8> = [];
-  while (shouldRead) {
-    let readResponse: Array<u8> = IO.read(1) as Array<u8>;
-    
-    if (readResponse.length > 0) {
-      Console.log(readResponse.toString());
-      Console.log("Yooo");
-
-      for (let i = 0; i < readResponse.length; i++) {
-        output.push(readResponse[i]);
-      }
-    }
-  }
-
-  Console.log("");
-  Console.log("yo: " + output.toString());
-
-  // Convert to an actual string
-  let convertedString: string = "";
-  for (let i = 1; i < output.length; i++) {
-    convertedString += String.fromCharCode(output[i] as i32);
-  }
-
-  Console.log("Converted: " + convertedString);
-
-  return;
-
 
   // Create all of our droplets
   for (let i = 0; i < 20; i++) {
@@ -110,7 +67,7 @@ export function _start(): void {
       drawDroplet(droplets[i]);
     }
 
-    sleep(1);
+    sleep(7);
 
     // Done!
   }
