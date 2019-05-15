@@ -3,13 +3,11 @@
 import { getRandomNumber } from "./utils";
 
 // Character code indexes
+// Not extracting from a string, to save memory
+// And make up for lack of garbage collection
 // http://www.asciitable.com/
 export const ENGLISH_CHARACTER_CODE_START: i32 = 33;
 export const ENGLISH_CHARACTER_CODE_END: i32 = 126;
-
-// Matrix Characters
-export const ENGLISH_CHARACTERS: string =
-  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
 
 // Get a random character from a character set
 export function getRandomCharacter(characterSet: string): string {

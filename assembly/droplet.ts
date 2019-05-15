@@ -12,6 +12,8 @@ import { GREEN, WHITE, printColor, moveCursorToPosition } from "./ansi";
 export class Droplet {
   column: i32;
   row: i32;
+  // Going to use a character code array here
+  // instead of a string to fix memory issues
   characterCodeArray: Array<u8>;
   speed: i32;
   height: i32;
@@ -45,6 +47,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
   // Increase the droplet row
   droplet.row += droplet.speed;
 
+  // Wrap the rows so it comes back from up top
   if (droplet.row >= droplet.height + lines) {
     droplet.row = 0 - droplet.height;
   }
@@ -67,6 +70,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
 
 // Places a droplet (and its characters) onto the screen
 export function drawDroplet(droplet: Droplet, lines: i32): void {
+  // Loop over our characters
   for (let i = 0; i < droplet.characterCodeArray.length; i++) {
     let cursorRow = droplet.row + i;
 
@@ -81,6 +85,8 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       }
 
       // Draw the character
+      // TODO: Optimize this, and try to remove generating / manipulating.
+      // Perhpas write the character Codes Array directly?
       printColor(String.fromCharCode(droplet.characterCodeArray[i]), color);
     }
   }

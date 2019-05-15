@@ -1,9 +1,14 @@
 // Some util functions
 
-import { Random, Date } from "./wasa";
+import { clockid, clock_time_get, random_get, errno } from "bindings/wasi";
 
+// Our recycled random byte pointer
+let randomBytePointer = memory.allocate(1);
 export function getRandomNumber(): i32 {
-  return Random.randomByte();
+  if (random_get(randomBytePointer, 1) != errno.SUCCESS) {
+    abort();
+  }
+  return load<u8>(randomBytePointer) as i32;
 }
 
 export function rotateArrayRight(data: Array<u8>): void {
@@ -29,6 +34,12 @@ export function sleep(sleepTicks: i32): void {
   }
 }
 
+// Recycle a time pointer to save memory
+let timeCounterPointer = memory.allocate(8);
 function getTimeCounter(): i32 {
-  return floor<f64>(Date.now() / 10000) as i32;
+  clock_time_get(clockid.REALTIME, 1000, timeCounterPointer);
+  let timestamp = load<u64>(timeCounterPointer);
+  // Divide by a large number here to get a reasonable counter
+  // As the timestamp is very large
+  return (timestamp / 10000000) as i32;
 }

@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "wapm run wasm-matrix -l 24 -c 80",
     "build": "npm run asbuild:untouched && npm run asbuild:optimized",
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug --use abort=wasiabort",

@@ -237,61 +237,6 @@ export class Console {
   }
 }
 
-// Our recycled random byte pointer
-let randomBytePointer = memory.allocate(1);
-export class Random {
-  /**
-   * Fill a buffer with random data
-   * @param buffer An array buffer
-   */
-  static randomFill(buffer: ArrayBuffer): void {
-    let len = buffer.byteLength;
-    let ptr = buffer.data;
-    while (len > 0) {
-      let chunk = min(len, 256);
-      if (random_get(ptr, chunk) != errno.SUCCESS) {
-        abort();
-      }
-      len -= chunk;
-      ptr += chunk;
-    }
-  }
-
-  /**
-   * Return an array of random bytes
-   * @param len length
-   */
-  static randomBytes(len: usize): Uint8Array {
-    let array = new Uint8Array(len);
-    this.randomFill(array.buffer);
-    return array;
-  }
-
-  /**
-   * Return a single random byte
-   */
-  static randomByte(): u8 {
-    if (random_get(randomBytePointer, 1) != errno.SUCCESS) {
-      abort();
-    }
-
-    return load<u8>(randomBytePointer);
-  }
-}
-
-// Our recycled time pointer
-let time_ptr = memory.allocate(8);
-export class Date {
-  /**
-   * Return the current timestamp, as a number of milliseconds since the epoch
-   */
-  static now(): f64 {
-    clock_time_get(clockid.REALTIME, 1000, time_ptr);
-    let unix_ts = load<u64>(time_ptr);
-    return (unix_ts as f64) / 1000.0;
-  }
-}
-
 class StringUtils {
   static fromCString(cstring: usize): string {
     let size = 0;
