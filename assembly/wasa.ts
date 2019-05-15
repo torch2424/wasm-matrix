@@ -229,6 +229,8 @@ export class Console {
   }
 }
 
+// Our recycled random byte pointer
+let randomBytePointer = memory.allocate(1);
 export class Random {
   /**
    * Fill a buffer with random data
@@ -256,17 +258,28 @@ export class Random {
     this.randomFill(array.buffer);
     return array;
   }
+
+  /**
+   * Return a single random byte
+   */
+  static randomByte(): u8 {
+    if (random_get(randomBytePointer, 1) != errno.SUCCESS) {
+      abort();
+    }
+    
+    return load<u8>(randomBytePointer)
+  }
 }
 
+// Our recycled time pointer
+let time_ptr = memory.allocate(8);
 export class Date {
   /**
    * Return the current timestamp, as a number of milliseconds since the epoch
    */
   static now(): f64 {
-    let time_ptr = memory.allocate(8);
     clock_time_get(clockid.REALTIME, 1000, time_ptr);
     let unix_ts = load<u64>(time_ptr);
-    memory.free(time_ptr);
     return unix_ts as f64 / 1000.0;
   }
 }

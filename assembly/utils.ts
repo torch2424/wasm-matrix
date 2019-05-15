@@ -6,7 +6,15 @@ import {
 } from './wasa';
 
 export function getRandomNumber(): i32 {
-  return Random.randomBytes(1)[0];
+  return Random.randomByte();
+}
+
+export function rotateArrayLeft(data: Array<u8>): void {
+  for (let i: i32 = data.length - 1; i > 0; i--) {
+    let leftElement: u8 = data[i - 1];
+    data[i - 1] = data[i];
+    data[i] = leftElement;
+  }
 }
 
 export function sleep(sleepTicks: i32): void {

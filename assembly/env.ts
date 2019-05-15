@@ -1,5 +1,7 @@
 // Any Env overrides
 
+import {Console} from './wasa';
+
 // https://github.com/AssemblyScript/assemblyscript/blob/master/std/assembly/env.ts
 // https://github.com/AssemblyScript/assemblyscript/issues/388
 @global

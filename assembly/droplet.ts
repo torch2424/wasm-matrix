@@ -1,11 +1,13 @@
 // Matrix Droplets
 
 import {
-  getRandomNumber
+  getRandomNumber,
+  rotateArrayLeft
 } from './utils';
 import {
-  ENGLISH_CHARACTERS,
-  getRandomCharacter
+  ENGLISH_CHARACTER_CODE_START,
+  ENGLISH_CHARACTER_CODE_END,
+  getRandomCharacterCode
 } from './characters';
 import {
   GREEN,
@@ -14,11 +16,11 @@ import {
   moveCursorToPosition
 } from './ansi';
 
-// Our Drople Class
+// Our Droplet Class
 export class Droplet {
   column: i32;
   row: i32;
-  characterString: string;
+  characterCodeArray: Array<u8>;
   speed: i32;
   height: i32;
 }
@@ -35,9 +37,12 @@ export function createDroplet(column: i32, speed: i32, lines: i32): Droplet {
   droplet.speed = (getRandomNumber() % (2 * speed)) + speed;
 
   // Create our initial string
-  droplet.characterString = "";
+  droplet.characterCodeArray = new Array<u8>(droplet.height);
   for (let i = 0; i < droplet.height; i++) {
-    droplet.characterString += getRandomCharacter(ENGLISH_CHARACTERS);
+    droplet.characterCodeArray[i] = getRandomCharacterCode(
+      ENGLISH_CHARACTER_CODE_START, 
+      ENGLISH_CHARACTER_CODE_END
+    );
   }
 
   return droplet;
@@ -53,19 +58,35 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
     droplet.row = 0 - droplet.height;
   }
 
-  // Remove the the moved characters
-  droplet.characterString = droplet.characterString.slice(droplet.speed, droplet.characterString.length);
+  // Rotate down the old characters
+  // How many characters to rotate
+  for (let i = 0; i < droplet.speed; i++) {
+    
+    rotateArrayLeft(droplet.characterCodeArray);
+    /*
+    // Actually rotate from the back of the array
+    for (let i: i32 = droplet.characterCodeArray.length - 1; i > 0; i--) {
+      let leftElement: u8 = droplet.characterCodeArray[i - 1];
+      droplet.characterCodeArray[i - 1] = droplet.characterCodeArray[i];
+      droplet.characterCodeArray[i] = leftElement;
+    }
+     */
+  }
 
-  // pop on a new character
-  for (let i = droplet.characterString.length; i < droplet.height; i++) {
-    droplet.characterString += getRandomCharacter(ENGLISH_CHARACTERS);
+  // Add some new characters
+  // To replace the old rotated ones
+  for (let i = 0; i < droplet.speed; i++) {
+    droplet.characterCodeArray[i] = getRandomCharacterCode(
+      ENGLISH_CHARACTER_CODE_START, 
+      ENGLISH_CHARACTER_CODE_END
+    );
   }
 }
 
 // Places a droplet (and its characters) onto the screen
 export function drawDroplet(droplet: Droplet, lines: i32): void {
 
-  for(let i = 0; i < droplet.characterString.length; i++) {
+  for(let i = 0; i < droplet.characterCodeArray.length; i++) {
 
     let cursorRow = droplet.row + i;
 
@@ -76,12 +97,12 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
 
       // Get our color
       let color: string = GREEN;
-      if (i === droplet.characterString.length - 1) {
+      if (i === droplet.characterCodeArray.length - 1) {
         color = WHITE;
       }
 
       // Draw the character
-      printColor(droplet.characterString.slice(i, i + 1), color);
+      // printColor(droplet.characterString.slice(i, i + 1), color);
     }
   }
 }
