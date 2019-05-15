@@ -4,37 +4,21 @@
 import "allocator/arena";
 
 // Export our env overrides
-export {
-  wasiabort
-} from './env';
+export { wasiabort } from "./env";
 
 // Import all of our utils and things
-import {
-  showHelp
-} from './cli';
-import {
-  RED,
-  printColor,
-  flushConsole
-} from './ansi';
-import {
-  Droplet,
-  createDroplet,
-  updateDroplet,
-  drawDroplet
-} from './droplet';
-import {
-  sleep
-} from './utils';
+import { showHelp } from "./cli";
+import { RED, printColor, flushConsole } from "./ansi";
+import { Droplet, createDroplet, updateDroplet, drawDroplet } from "./droplet";
+import { sleep } from "./utils";
 
 // Import our CommandLine for grabbing args
-import {CommandLine} from './wasa';
+import { CommandLine } from "./wasa";
 
 // Entry point into WASI Module
 // _start may be renamed
 // https://github.com/WebAssembly/WASI/issues/19
 export function _start(): void {
-
   // Set to the default linux terminal size
   let columns: i32 = 80;
   let lines: i32 = 24;
@@ -49,10 +33,9 @@ export function _start(): void {
   if (args.length <= 1) {
     showHelp();
     return;
-  } 
+  }
 
-  for(let i = 0; i < args.length; i++) {
-
+  for (let i = 0; i < args.length; i++) {
     let arg: string = args[i];
 
     if (arg == "-l" || arg == "--lines") {
@@ -89,10 +72,9 @@ export function _start(): void {
   const droplets: Droplet[] = new Array<Droplet>(columns);
   for (let i = 0; i < columns; i++) {
     droplets[i] = createDroplet(i, lines);
-  } 
+  }
 
-  while(true) {
-
+  while (true) {
     // Update our droplets
     for (let i = 0; i < droplets.length; i++) {
       updateDroplet(droplets[i], lines);
@@ -100,7 +82,7 @@ export function _start(): void {
 
     // Clear the screen
     flushConsole();
-    
+
     // Draw the droplets
     for (let i = 0; i < droplets.length; i++) {
       drawDroplet(droplets[i], lines);
@@ -111,4 +93,3 @@ export function _start(): void {
     // Done!
   }
 }
-

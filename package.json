@@ -9,7 +9,13 @@
     "start": "wapm run wasm-matrix -l 24 -c 80",
     "build": "npm run asbuild:untouched && npm run asbuild:optimized",
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug --use abort=wasiabort",
-    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --use abort=wasiabort"
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --use abort=wasiabort",
+    "lint": "npx prettier --write assembly/*.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,6 +29,9 @@
   "homepage": "https://github.com/torch2424/wasm-matrix#readme",
   "dependencies": {},
   "devDependencies": {
-    "assemblyscript": "github:AssemblyScript/assemblyscript"
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
+    "husky": "^2.3.0",
+    "prettier": "1.17.1",
+    "pretty-quick": "^1.10.0"
   }
 }
