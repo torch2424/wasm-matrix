@@ -2,7 +2,7 @@
 
 import {
   getRandomNumber,
-  rotateArrayLeft
+  rotateArrayRight
 } from './utils';
 import {
   ENGLISH_CHARACTER_CODE_START,
@@ -26,7 +26,7 @@ export class Droplet {
 }
 
 // Function to create a droplet
-export function createDroplet(column: i32, speed: i32, lines: i32): Droplet {
+export function createDroplet(column: i32, lines: i32): Droplet {
   // Create the droplet
   let droplet: Droplet = new Droplet();
 
@@ -34,7 +34,7 @@ export function createDroplet(column: i32, speed: i32, lines: i32): Droplet {
   droplet.column = column;
   droplet.row = (getRandomNumber() % lines);
   droplet.height = (getRandomNumber() % (lines / 2)) + 3;
-  droplet.speed = (getRandomNumber() % (2 * speed)) + speed;
+  droplet.speed = (getRandomNumber() % 2) + 1;
 
   // Create our initial string
   droplet.characterCodeArray = new Array<u8>(droplet.height);
@@ -61,16 +61,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
   // Rotate down the old characters
   // How many characters to rotate
   for (let i = 0; i < droplet.speed; i++) {
-    
-    rotateArrayLeft(droplet.characterCodeArray);
-    /*
-    // Actually rotate from the back of the array
-    for (let i: i32 = droplet.characterCodeArray.length - 1; i > 0; i--) {
-      let leftElement: u8 = droplet.characterCodeArray[i - 1];
-      droplet.characterCodeArray[i - 1] = droplet.characterCodeArray[i];
-      droplet.characterCodeArray[i] = leftElement;
-    }
-     */
+    rotateArrayRight(droplet.characterCodeArray);
   }
 
   // Add some new characters

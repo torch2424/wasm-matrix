@@ -9,11 +9,11 @@ export function getRandomNumber(): i32 {
   return Random.randomByte();
 }
 
-export function rotateArrayLeft(data: Array<u8>): void {
-  for (let i: i32 = data.length - 1; i > 0; i--) {
-    let leftElement: u8 = data[i - 1];
-    data[i - 1] = data[i];
-    data[i] = leftElement;
+export function rotateArrayRight(data: Array<u8>): void {
+  for (let i: i32 = 0; i < data.length - 1; i++) {
+    let rightElement: u8 = data[i + 1];
+    data[i + 1] = data[i];
+    data[i] = rightElement;
   }
 }
 

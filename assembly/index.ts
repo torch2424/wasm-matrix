@@ -40,7 +40,7 @@ export function _start(): void {
   let lines: i32 = 24;
 
   // Set to the default speed
-  let speed: i32 = 1;
+  let speed: i32 = 10;
 
   // Parse command line arguments
   let commandLine = new CommandLine();
@@ -55,7 +55,7 @@ export function _start(): void {
 
     let arg: string = args[i];
 
-    if (arg === "-l" || arg === "--lines") {
+    if (arg == "-l" || arg == "--lines") {
       lines = parseInt(args[i + 1]) as i32;
       i++;
 
@@ -63,7 +63,7 @@ export function _start(): void {
         printColor("Please enter a lines greater than zero", RED);
         return;
       }
-    } else if (arg === "-c" || arg === "--columns") {
+    } else if (arg == "-c" || arg == "--columns") {
       columns = parseInt(args[i + 1]) as i32;
       i++;
 
@@ -71,15 +71,15 @@ export function _start(): void {
         printColor("Please enter a column greater than zero", RED);
         return;
       }
-    } else if (arg === "-s" || arg === "--speed") {
+    } else if (arg == "-s" || arg == "--speed") {
       speed = parseInt(args[i + 1]) as i32;
       i++;
 
-      if (speed < 1 || speed > 10) {
-        printColor("Please enter a speed >=1 and <= 10", RED);
+      if (speed < 1 || speed > 20) {
+        printColor("Please enter a speed >=1 and <= 20", RED);
         return;
       }
-    } else if (arg === "-h" || arg === "--help") {
+    } else if (arg == "-h" || arg == "--help") {
       showHelp();
       return;
     }
@@ -88,7 +88,7 @@ export function _start(): void {
   // Create all of our droplets
   const droplets: Droplet[] = new Array<Droplet>(columns);
   for (let i = 0; i < columns; i++) {
-    droplets[i] = createDroplet(i, speed, lines);
+    droplets[i] = createDroplet(i, lines);
   } 
 
   while(true) {
@@ -106,7 +106,7 @@ export function _start(): void {
       drawDroplet(droplets[i], lines);
     }
 
-    sleep(11);
+    sleep(20 - speed);
 
     // Done!
   }
