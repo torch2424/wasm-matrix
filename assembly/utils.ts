@@ -1,9 +1,6 @@
 // Some util functions
 
-import {
-  Random,
-  Date
-} from './wasa';
+import { Random, Date } from "./wasa";
 
 export function getRandomNumber(): i32 {
   return Random.randomByte();
@@ -23,7 +20,6 @@ export function sleep(sleepTicks: i32): void {
   let shouldLoop: boolean = true;
 
   while (shouldLoop) {
-
     let currentTime: i32 = getTimeCounter();
 
     // See if it is time to update
@@ -36,4 +32,3 @@ export function sleep(sleepTicks: i32): void {
 function getTimeCounter(): i32 {
   return floor<f64>(Date.now() / 10000) as i32;
 }
-

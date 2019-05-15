@@ -1,6 +1,6 @@
 // THIS CODE IS FROM ANOTHER PROJECT!!!
 // Slightly modified for specific uses
-// https://github.com/jedisct1/wasa 
+// https://github.com/jedisct1/wasa
 // This is a slimmed down version of their code
 // To help with module size, compilation errors,
 // and ease of use.
@@ -24,8 +24,8 @@ import {
   lookupflags,
   fd,
   fdflags,
-  fd_close,
-} from 'bindings/wasi';
+  fd_close
+} from "bindings/wasi";
 
 export type Descriptor = fd;
 
@@ -111,7 +111,11 @@ export class IO {
    * @param data existing array to push data to
    * @param chunk_size chunk size (default: 4096)
    */
-  static read(fd: Descriptor, data: Array<u8> = [], chunk_size: usize = 4096): Array<u8> | null {
+  static read(
+    fd: Descriptor,
+    data: Array<u8> = [],
+    chunk_size: usize = 4096
+  ): Array<u8> | null {
     let data_partial_len = chunk_size;
     let data_partial = memory.allocate(data_partial_len);
     let iov = memory.allocate(2 * sizeof<usize>());
@@ -141,7 +145,11 @@ export class IO {
    * @param data existing array to push data to
    * @param chunk_size chunk size (default: 4096)
    */
-  static readAll(fd: Descriptor, data: Array<u8> = [], chunk_size: usize = 4096): Array<u8> | null {
+  static readAll(
+    fd: Descriptor,
+    data: Array<u8> = [],
+    chunk_size: usize = 4096
+  ): Array<u8> | null {
     let data_partial_len = chunk_size;
     let data_partial = memory.allocate(data_partial_len);
     let iov = memory.allocate(2 * sizeof<usize>());
@@ -149,7 +157,7 @@ export class IO {
     store<u32>(iov + sizeof<usize>(), data_partial_len);
     let read_ptr = memory.allocate(sizeof<usize>());
     let read: usize = 0;
-    for (; ;) {
+    for (;;) {
       if (fd_read(fd, iov, 1, read_ptr) != errno.SUCCESS) {
         break;
       }
@@ -266,8 +274,8 @@ export class Random {
     if (random_get(randomBytePointer, 1) != errno.SUCCESS) {
       abort();
     }
-    
-    return load<u8>(randomBytePointer)
+
+    return load<u8>(randomBytePointer);
   }
 }
 
@@ -280,7 +288,7 @@ export class Date {
   static now(): f64 {
     clock_time_get(clockid.REALTIME, 1000, time_ptr);
     let unix_ts = load<u64>(time_ptr);
-    return unix_ts as f64 / 1000.0;
+    return (unix_ts as f64) / 1000.0;
   }
 }
 
@@ -340,4 +348,3 @@ export class CommandLine {
     return null;
   }
 }
-

@@ -1,9 +1,9 @@
 // Ansi Sequences and convenience functions
 
-import {Console} from './wasa';
+import { Console } from "./wasa";
 
 // ANSI Escape
-const ESC: string = "\u001b["; 
+const ESC: string = "\u001b[";
 
 // Ansi Color Codes
 export const GREEN: string = ESC + "32m";
@@ -20,15 +20,15 @@ export function printColor(value: string, color: string): void {
 }
 
 export function flushConsole(): void {
-  Console.write(ESC + "2J", false)
+  Console.write(ESC + "2J", false);
 }
 
 // https://github.com/nojvek/matrix-rain/blob/master/ansi.js
 export function moveCursorToPosition(column: i32, row: i32): void {
-  let cursorPosition: string = ESC + row.toString() + ";" + column.toString() + "H";
+  let cursorPosition: string =
+    ESC + row.toString() + ";" + column.toString() + "H";
   Console.write(cursorPosition, false);
 
   // Hide the cursor
   Console.write(HIDE_CURSOR, false);
 }
-

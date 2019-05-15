@@ -1,13 +1,7 @@
 // Convinience functions for our CLI
 
-import {Console} from './wasa';
-import {
-  GREEN, 
-  CYAN,
-  RED,
-  RESET,
-  printColor
-} from './ansi';
+import { Console } from "./wasa";
+import { GREEN, CYAN, RED, RESET, printColor } from "./ansi";
 
 export function showHelp(): void {
   Console.log("");
@@ -17,7 +11,7 @@ export function showHelp(): void {
   printColor("USAGE:", CYAN);
   Console.log("");
 
-  Console.log("[wapm run] wasm-matrix -l $LINES -c $COLUMNS")
+  Console.log("[wapm run] wasm-matrix -l $LINES -c $COLUMNS");
   Console.log("");
 
   printColor("FLAGS:", CYAN);
@@ -38,4 +32,3 @@ export function showHelp(): void {
   Console.log("Suggested: 1, Default: 1");
   Console.log("");
 }
-
