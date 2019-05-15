@@ -100,8 +100,15 @@ export function _start(): void {
 
     // Clear the screen
     flushConsole();
+    
+    // Draw the droplets
+    for (let i = 0; i < droplets.length; i++) {
+      drawDroplet(droplets[i], lines);
+    }
 
+    sleep(11);
 
+    // Done!
   }
 }
 

@@ -102,7 +102,7 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       }
 
       // Draw the character
-      // printColor(droplet.characterString.slice(i, i + 1), color);
+      printColor(String.fromCharCode(droplet.characterCodeArray[i]), color);
     }
   }
 }
