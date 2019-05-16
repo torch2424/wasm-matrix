@@ -17,11 +17,11 @@ Uses the [AssemblyScript WASI bindings](https://github.com/AssemblyScript/assemb
 
 # Usage
 
-Install using [WAPM](https://wapm.io/):
+**Install using [WAPM](https://wapm.io/)**:
 
 `wapm install -g torch2424/wasm-matrix`
 
-And then run `wasm-matrix`:
+**And then run `wasm-matrix`**:
 
 `wapm run wasm-matrix -l $LINES -c $COLUMNS`
 
