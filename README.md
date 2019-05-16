@@ -18,9 +18,13 @@ And then run `wasm-matrix`:
 
 `wapm run wasm-matrix -l $LINES -c $COLUMNS`
 
+# Caveats
+
+Currently, in version `0.0.1` this isn't using the clock subscription, and using an old school `while(true)` loop to run the matrix. Thus, this will peg a core of CPU, wouldn't suggest running this on a cheap single core droplet (server). 🙂
+
 # Contributing
 
-Feel free to fork and submit PRs! Opening an issue is reccomended before starting any development, as a discussion would be nice on the idea / feature before writing code. Any help is much appreciated, and would be a ton of fun!
+Feel free to fork and submit PRs! Opening an issue is reccomended before starting any development, as a discussion would be nice on the idea / feature before writing code. Any help is much appreciated, and would be a ton of fun! 🎉
 
 ## Setup
 
@@ -44,6 +48,6 @@ Run the project with the standard usage: `wapm run wasm-matrix -l $LINES -c $COL
 
 - [jedisct1](https://github.com/jedisct1) - For building wasa. Was a huge help!
 
-- [Binji](https://twitter.com/binjimint) - For inspiring this project on one of our hack days. Chekc out their [hack day wasm project](https://twitter.com/binjimint/status/1127421365139587072)!
+- [Binji](https://twitter.com/binjimint) - For inspiring this project on one of our hack days. Check out their [hack day wasm project](https://twitter.com/binjimint/status/1127421365139587072)!
 
 - [Colin Eberhardt](https://twitter.com/ColinEberhardt) - For [joining in on the Wasm Hacking fun](https://twitter.com/ColinEberhardt/status/1128701985757253632)!
