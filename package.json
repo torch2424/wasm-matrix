@@ -1,15 +1,16 @@
 {
   "name": "wasm-matrix",
   "version": "0.0.1",
-  "description": "What if I told you",
-  "main": "index.js",
+  "description": "A Matrix effect in your terminal using AssemblyScript 🚀 and WASI 🧩 . Deployed to WAPM 📦 .",
   "scripts": {
     "postinstall": "npm run build",
     "start": "wapm run wasm-matrix -l 24 -c 80",
     "build": "npm run asbuild:untouched && npm run asbuild:optimized",
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug --use abort=wasiabort",
     "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --use abort=wasiabort",
-    "lint": "npx prettier --write assembly/*.ts"
+    "lint": "npx prettier --write assembly/*.ts",
+    "deploy": "npx np --no-publish",
+    "postdeploy": "echo \"Don't forget to bump the wapm.toml, and Publish to wapm using `wapm deploy`\""
   },
   "husky": {
     "hooks": {
@@ -30,6 +31,7 @@
   "devDependencies": {
     "assemblyscript": "github:AssemblyScript/assemblyscript",
     "husky": "^2.3.0",
+    "np": "^5.0.1",
     "prettier": "1.17.1",
     "pretty-quick": "^1.10.0"
   }

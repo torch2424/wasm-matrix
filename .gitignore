@@ -1,5 +1,5 @@
 # Build
-build/
+build/*.*.map
 
 # System files
 .DS_Store
