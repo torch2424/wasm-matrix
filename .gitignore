@@ -1,3 +1,6 @@
+# Wapm
+wapm_packages/
+
 # Build
 build/*.*.map
 
