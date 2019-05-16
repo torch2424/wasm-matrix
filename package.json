@@ -10,7 +10,7 @@
     "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --use abort=wasiabort",
     "lint": "npx prettier --write assembly/*.ts",
     "deploy": "npx np --no-publish",
-    "postdeploy": "echo \"Don't forget to bump the wapm.toml, and Publish to wapm using `wapm deploy`\""
+    "postdeploy": "echo \"Don't forget to bump the wapm.toml, and Publish to wapm using 'wapm publish'\""
   },
   "husky": {
     "hooks": {

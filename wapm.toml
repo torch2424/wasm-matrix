@@ -1,5 +1,5 @@
 [package]
-name = "wasm-matrix"
+name = "torch2424/wasm-matrix"
 version = "0.0.1"
 description = "A Matrix effect in your terminal using AssemblyScript 🚀 and WASI 🧩 . Deployed to WAPM 📦 ."
 readme = "README.md"
