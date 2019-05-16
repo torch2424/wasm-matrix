@@ -4,7 +4,7 @@ A Matrix Effect in your terminal using AssemblyScript 🚀 and WASI 🧩 . Deplo
 
 Uses the [AssemblyScript WASI bindings](https://github.com/AssemblyScript/assemblyscript/blob/master/std/assembly/bindings/wasi_unstable.ts), with some help from [Wasa](https://github.com/jedisct1/wasa).
 
-<img alt="What if I told you Wasm is not web or assembly?" width="auto" height="300px" src="https://github.com/torch2424/wasm-matrix/raw/master/docs_assets/matrix-meme.jpg"> <img alt="wasm matrix demo gif" width="auto" height="300px" src="https://github.com/torch2424/wasm-matrix/raw/master/docs_assets/matrix.jpg">
+<img alt="What if I told you Wasm is not web or assembly?" width="auto" height="300px" src="https://github.com/torch2424/wasm-matrix/raw/master/docs_assets/matrix-meme.jpg"> <img alt="wasm matrix demo gif" width="auto" height="300px" src="https://github.com/torch2424/wasm-matrix/raw/master/docs_assets/matrix.gif">
 
 # Table of Contents
 
