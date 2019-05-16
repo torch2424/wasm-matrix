@@ -8,8 +8,6 @@ Uses the [AssemblyScript WASI bindings](https://github.com/AssemblyScript/assemb
 
 # Table of Contents
 
-- [wasm-matrix](#wasm-matrix)
-- [Table of Contents](#table-of-contents)
 - [Usage](#usage)
 - [Caveats](#caveats)
 - [Contributing](#contributing)
