@@ -7,7 +7,7 @@
     "start": "wapm run wasm-matrix -l 24 -c 80",
     "build": "npm run asbuild:untouched && npm run asbuild:optimized",
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug --use abort=wasiabort",
-    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize --use abort=wasiabort",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate -Oz --use abort=wasiabort",
     "lint": "npx prettier --write assembly/*.ts",
     "deploy": "npx np --no-publish",
     "postdeploy": "echo \"Don't forget to bump the wapm.toml, and Publish to wapm using 'wapm publish'\""
