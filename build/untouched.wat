@@ -1,10 +1,10 @@
 (module
  (type $FUNCSIG$v (func))
+ (type $FUNCSIG$ii (func (param i32) (result i32)))
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
  (type $FUNCSIG$viiii (func (param i32 i32 i32 i32)))
  (type $FUNCSIG$vii (func (param i32 i32)))
  (type $FUNCSIG$viii (func (param i32 i32 i32)))
- (type $FUNCSIG$ii (func (param i32) (result i32)))
  (type $FUNCSIG$iiiii (func (param i32 i32 i32 i32) (result i32)))
  (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$viiiii (func (param i32 i32 i32 i32 i32)))
@@ -12,75 +12,76 @@
  (type $FUNCSIG$dii (func (param i32 i32) (result f64)))
  (type $FUNCSIG$i (func (result i32)))
  (type $FUNCSIG$iiji (func (param i32 i64 i32) (result i32)))
- (import "wasi_unstable" "fd_write" (func $~lib/bindings/wasi_unstable/fd_write (param i32 i32 i32 i32) (result i32)))
  (import "wasi_unstable" "args_sizes_get" (func $~lib/bindings/wasi_unstable/args_sizes_get (param i32 i32) (result i32)))
+ (import "wasi_unstable" "fd_write" (func $~lib/bindings/wasi_unstable/fd_write (param i32 i32 i32 i32) (result i32)))
  (import "wasi_unstable" "args_get" (func $~lib/bindings/wasi_unstable/args_get (param i32 i32) (result i32)))
  (import "wasi_unstable" "random_get" (func $~lib/bindings/wasi_unstable/random_get (param i32 i32) (result i32)))
  (import "wasi_unstable" "clock_time_get" (func $~lib/bindings/wasi_unstable/clock_time_get (param i32 i64 i32) (result i32)))
  (memory $0 1)
  (data (i32.const 8) "\02\00\00\00\1b\00[\00")
- (data (i32.const 16) "\03\00\00\003\002\00m\00")
- (data (i32.const 32) "\04\00\00\00n\00u\00l\00l\00")
- (data (i32.const 48) "\0e\00\00\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
- (data (i32.const 80) "\00\00\00\00")
- (data (i32.const 88) "\17\00\00\00~\00l\00i\00b\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
- (data (i32.const 144) "\03\00\00\003\007\00m\00")
- (data (i32.const 160) "\03\00\00\003\001\00m\00")
- (data (i32.const 176) "\03\00\00\003\006\00m\00")
- (data (i32.const 192) "\02\00\00\000\00m\00")
- (data (i32.const 200) "\04\00\00\00?\002\005\00h\00")
- (data (i32.const 216) "\00\00\00\00\00\00\00\00")
- (data (i32.const 224) "\d8\00\00\00\00\00\00\00")
- (data (i32.const 232) "\0d\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00")
- (data (i32.const 264) "\1c\00\00\00~\00l\00i\00b\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00")
- (data (i32.const 328) "\0b\00\00\00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00")
- (data (i32.const 360) "\06\00\00\00U\00S\00A\00G\00E\00:\00")
- (data (i32.const 376) ",\00\00\00[\00w\00a\00p\00m\00 \00r\00u\00n\00]\00 \00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00 \00-\00l\00 \00$\00L\00I\00N\00E\00S\00 \00-\00c\00 \00$\00C\00O\00L\00U\00M\00N\00S\00")
- (data (i32.const 472) "\06\00\00\00F\00L\00A\00G\00S\00:\00")
- (data (i32.const 488) "\0c\00\00\00-\00l\00,\00 \00-\00-\00l\00i\00n\00e\00s\00 \00")
- (data (i32.const 520) "\n\00\00\00(\00R\00E\00Q\00U\00I\00R\00E\00D\00)\00")
- (data (i32.const 544) "+\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 \00l\00i\00n\00e\00s\00 \00(\00r\00o\00w\00s\00)\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
- (data (i32.const 640) ".\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \00$\00L\00I\00N\00E\00S\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \002\004\00")
- (data (i32.const 736) "\0e\00\00\00-\00c\00,\00 \00-\00-\00c\00o\00l\00u\00m\00n\00s\00 \00")
- (data (i32.const 768) "&\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 \00c\00o\00l\00u\00m\00n\00s\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
- (data (i32.const 848) "0\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \00$\00C\00O\00L\00U\00M\00N\00S\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \008\000\00")
- (data (i32.const 952) "\0b\00\00\00-\00s\00,\00 \00-\00-\00s\00p\00e\00e\00d\00")
- (data (i32.const 984) "\13\00\00\00S\00p\00e\00e\00d\00 \00o\00f\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
- (data (i32.const 1032) "\18\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \001\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \001\00")
- (data (i32.const 1088) "\02\00\00\00-\00l\00")
- (data (i32.const 1096) "\07\00\00\00-\00-\00l\00i\00n\00e\00s\00")
- (data (i32.const 1120) "&\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00l\00i\00n\00e\00s\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o\00")
- (data (i32.const 1200) "\02\00\00\00-\00c\00")
- (data (i32.const 1208) "\t\00\00\00-\00-\00c\00o\00l\00u\00m\00n\00s\00")
- (data (i32.const 1232) "\'\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00c\00o\00l\00u\00m\00n\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o\00")
- (data (i32.const 1320) "\02\00\00\00-\00s\00")
- (data (i32.const 1328) "\07\00\00\00-\00-\00s\00p\00e\00e\00d\00")
- (data (i32.const 1352) "\"\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00s\00p\00e\00e\00d\00 \00>\00=\001\00 \00a\00n\00d\00 \00<\00=\00 \002\000\00")
- (data (i32.const 1424) "\02\00\00\00-\00h\00")
- (data (i32.const 1432) "\06\00\00\00-\00-\00h\00e\00l\00p\00")
- (data (i32.const 1448) "\02\00\00\002\00J\00")
- (data (i32.const 1456) "\01\00\00\000\00")
- (data (i32.const 1464) "\90\01\00\00\00\00\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1976) "\b8\05\00\00d\00\00\00")
- (data (i32.const 1984) "\01\00\00\00;\00")
- (data (i32.const 1992) "\01\00\00\00H\00")
+ (data (i32.const 16) "\04\00\00\00\1b\00[\002\00J\00")
+ (data (i32.const 32) "\05\00\00\00\1b\00[\003\002\00m\00")
+ (data (i32.const 48) "\05\00\00\00\1b\00[\003\007\00m\00")
+ (data (i32.const 64) "\05\00\00\00\1b\00[\003\001\00m\00")
+ (data (i32.const 80) "\05\00\00\00\1b\00[\003\006\00m\00")
+ (data (i32.const 96) "\04\00\00\00\1b\00[\000\00m\00")
+ (data (i32.const 112) "\06\00\00\00\1b\00[\00?\002\005\00h\00")
+ (data (i32.const 128) "\00\00\00\00\00\00\00\00")
+ (data (i32.const 136) "\80\00\00\00\00\00\00\00")
+ (data (i32.const 144) "\00\00\00\00")
+ (data (i32.const 152) "\0e\00\00\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
+ (data (i32.const 184) "\17\00\00\00~\00l\00i\00b\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
+ (data (i32.const 240) "\0d\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00")
+ (data (i32.const 272) "\1c\00\00\00~\00l\00i\00b\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00")
+ (data (i32.const 336) "\0b\00\00\00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00")
+ (data (i32.const 368) "\04\00\00\00n\00u\00l\00l\00")
+ (data (i32.const 384) "\06\00\00\00U\00S\00A\00G\00E\00:\00")
+ (data (i32.const 400) ",\00\00\00[\00w\00a\00p\00m\00 \00r\00u\00n\00]\00 \00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00 \00-\00l\00 \00$\00L\00I\00N\00E\00S\00 \00-\00c\00 \00$\00C\00O\00L\00U\00M\00N\00S\00")
+ (data (i32.const 496) "\06\00\00\00F\00L\00A\00G\00S\00:\00")
+ (data (i32.const 512) "\0c\00\00\00-\00l\00,\00 \00-\00-\00l\00i\00n\00e\00s\00 \00")
+ (data (i32.const 544) "\n\00\00\00(\00R\00E\00Q\00U\00I\00R\00E\00D\00)\00")
+ (data (i32.const 568) "+\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 \00l\00i\00n\00e\00s\00 \00(\00r\00o\00w\00s\00)\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
+ (data (i32.const 664) ".\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \00$\00L\00I\00N\00E\00S\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \002\004\00")
+ (data (i32.const 760) "\0e\00\00\00-\00c\00,\00 \00-\00-\00c\00o\00l\00u\00m\00n\00s\00 \00")
+ (data (i32.const 792) "&\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 \00c\00o\00l\00u\00m\00n\00s\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
+ (data (i32.const 872) "0\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \00$\00C\00O\00L\00U\00M\00N\00S\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \008\000\00")
+ (data (i32.const 976) "\0b\00\00\00-\00s\00,\00 \00-\00-\00s\00p\00e\00e\00d\00")
+ (data (i32.const 1008) "\13\00\00\00S\00p\00e\00e\00d\00 \00o\00f\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x\00")
+ (data (i32.const 1056) "\18\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 \001\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 \001\00")
+ (data (i32.const 1112) "\02\00\00\00-\00l\00")
+ (data (i32.const 1120) "\07\00\00\00-\00-\00l\00i\00n\00e\00s\00")
+ (data (i32.const 1144) "&\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00l\00i\00n\00e\00s\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o\00")
+ (data (i32.const 1224) "\02\00\00\00-\00c\00")
+ (data (i32.const 1232) "\t\00\00\00-\00-\00c\00o\00l\00u\00m\00n\00s\00")
+ (data (i32.const 1256) "\'\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00c\00o\00l\00u\00m\00n\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o\00")
+ (data (i32.const 1344) "\02\00\00\00-\00s\00")
+ (data (i32.const 1352) "\07\00\00\00-\00-\00s\00p\00e\00e\00d\00")
+ (data (i32.const 1376) "\"\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00s\00p\00e\00e\00d\00 \00>\00=\001\00 \00a\00n\00d\00 \00<\00=\00 \002\000\00")
+ (data (i32.const 1448) "\02\00\00\00-\00h\00")
+ (data (i32.const 1456) "\06\00\00\00-\00-\00h\00e\00l\00p\00")
+ (data (i32.const 1472) "\01\00\00\000\00")
+ (data (i32.const 1480) "\90\01\00\00\00\00\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1992) "\c8\05\00\00d\00\00\00")
+ (data (i32.const 2000) "\01\00\00\00;\00")
+ (data (i32.const 2008) "\01\00\00\00H\00")
  (table $0 1 funcref)
  (elem (i32.const 0) $null)
  (global $~lib/allocator/arena/startOffset (mut i32) (i32.const 0))
  (global $~lib/allocator/arena/offset (mut i32) (i32.const 0))
  (global $assembly/ansi/ESC i32 (i32.const 8))
- (global $assembly/ansi/GREEN (mut i32) (i32.const 0))
- (global $assembly/ansi/WHITE (mut i32) (i32.const 0))
- (global $assembly/ansi/RED (mut i32) (i32.const 0))
- (global $assembly/ansi/CYAN (mut i32) (i32.const 0))
- (global $assembly/ansi/RESET (mut i32) (i32.const 0))
- (global $assembly/ansi/HIDE_CURSOR (mut i32) (i32.const 0))
+ (global $assembly/ansi/FLUSH i32 (i32.const 16))
+ (global $assembly/ansi/GREEN i32 (i32.const 32))
+ (global $assembly/ansi/WHITE i32 (i32.const 48))
+ (global $assembly/ansi/RED i32 (i32.const 64))
+ (global $assembly/ansi/CYAN i32 (i32.const 80))
+ (global $assembly/ansi/RESET i32 (i32.const 96))
+ (global $assembly/ansi/HIDE_CURSOR i32 (i32.const 112))
  (global $assembly/utils/randomBytePointer (mut i32) (i32.const 0))
  (global $assembly/utils/timeCounterPointer (mut i32) (i32.const 0))
  (global $assembly/characters/ENGLISH_CHARACTER_CODE_START i32 (i32.const 33))
  (global $assembly/characters/ENGLISH_CHARACTER_CODE_END i32 (i32.const 126))
  (global $~lib/ASC_SHRINK_LEVEL i32 (i32.const 0))
- (global $~lib/memory/HEAP_BASE i32 (i32.const 2000))
+ (global $~lib/memory/HEAP_BASE i32 (i32.const 2016))
  (global $~lib/argc (mut i32) (i32.const 0))
  (export "memory" (memory $0))
  (export "table" (table $0))
@@ -100,7 +101,117 @@
   global.get $~lib/allocator/arena/startOffset
   global.set $~lib/allocator/arena/offset
  )
- (func $~lib/string/String#get:lengthUTF8 (; 6 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/allocator/arena/__memory_allocate (; 6 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  local.get $0
+  i32.const 1073741824
+  i32.gt_u
+  if
+   unreachable
+  end
+  global.get $~lib/allocator/arena/offset
+  local.set $1
+  local.get $1
+  local.get $0
+  local.tee $2
+  i32.const 1
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.add
+  i32.const 7
+  i32.add
+  i32.const 7
+  i32.const -1
+  i32.xor
+  i32.and
+  local.set $4
+  current_memory
+  local.set $5
+  local.get $4
+  local.get $5
+  i32.const 16
+  i32.shl
+  i32.gt_u
+  if
+   local.get $4
+   local.get $1
+   i32.sub
+   i32.const 65535
+   i32.add
+   i32.const 65535
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 16
+   i32.shr_u
+   local.set $2
+   local.get $5
+   local.tee $3
+   local.get $2
+   local.tee $6
+   local.get $3
+   local.get $6
+   i32.gt_s
+   select
+   local.set $3
+   local.get $3
+   grow_memory
+   i32.const 0
+   i32.lt_s
+   if
+    local.get $2
+    grow_memory
+    i32.const 0
+    i32.lt_s
+    if
+     unreachable
+    end
+   end
+  end
+  local.get $4
+  global.set $~lib/allocator/arena/offset
+  local.get $1
+ )
+ (func $start:assembly/utils (; 7 ;) (type $FUNCSIG$v)
+  (local $0 i32)
+  block $~lib/memory/memory.allocate|inlined.0 (result i32)
+   i32.const 1
+   local.set $0
+   local.get $0
+   call $~lib/allocator/arena/__memory_allocate
+   br $~lib/memory/memory.allocate|inlined.0
+  end
+  global.set $assembly/utils/randomBytePointer
+  block $~lib/memory/memory.allocate|inlined.1 (result i32)
+   i32.const 8
+   local.set $0
+   local.get $0
+   call $~lib/allocator/arena/__memory_allocate
+   br $~lib/memory/memory.allocate|inlined.1
+  end
+  global.set $assembly/utils/timeCounterPointer
+ )
+ (func $start:assembly/droplet (; 8 ;) (type $FUNCSIG$v)
+  call $start:assembly/utils
+ )
+ (func $start:assembly/index (; 9 ;) (type $FUNCSIG$v)
+  call $start:~lib/allocator/arena
+  call $start:assembly/droplet
+ )
+ (func $~lib/memory/memory.allocate (; 10 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+  local.get $0
+  call $~lib/allocator/arena/__memory_allocate
+  return
+ )
+ (func $~lib/string/String#get:lengthUTF8 (; 11 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -213,86 +324,7 @@
   end
   local.get $1
  )
- (func $~lib/allocator/arena/__memory_allocate (; 7 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $0
-  i32.const 1073741824
-  i32.gt_u
-  if
-   unreachable
-  end
-  global.get $~lib/allocator/arena/offset
-  local.set $1
-  local.get $1
-  local.get $0
-  local.tee $2
-  i32.const 1
-  local.tee $3
-  local.get $2
-  local.get $3
-  i32.gt_u
-  select
-  i32.add
-  i32.const 7
-  i32.add
-  i32.const 7
-  i32.const -1
-  i32.xor
-  i32.and
-  local.set $4
-  current_memory
-  local.set $5
-  local.get $4
-  local.get $5
-  i32.const 16
-  i32.shl
-  i32.gt_u
-  if
-   local.get $4
-   local.get $1
-   i32.sub
-   i32.const 65535
-   i32.add
-   i32.const 65535
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.const 16
-   i32.shr_u
-   local.set $2
-   local.get $5
-   local.tee $3
-   local.get $2
-   local.tee $6
-   local.get $3
-   local.get $6
-   i32.gt_s
-   select
-   local.set $3
-   local.get $3
-   grow_memory
-   i32.const 0
-   i32.lt_s
-   if
-    local.get $2
-    grow_memory
-    i32.const 0
-    i32.lt_s
-    if
-     unreachable
-    end
-   end
-  end
-  local.get $4
-  global.set $~lib/allocator/arena/offset
-  local.get $1
- )
- (func $~lib/string/String#toUTF8 (; 8 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/string/String#toUTF8 (; 12 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -300,13 +332,13 @@
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
-  block $~lib/memory/memory.allocate|inlined.0 (result i32)
+  block $~lib/memory/memory.allocate|inlined.3 (result i32)
    local.get $0
    call $~lib/string/String#get:lengthUTF8
    local.set $1
    local.get $1
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.0
+   br $~lib/memory/memory.allocate|inlined.3
   end
   local.set $2
   i32.const 0
@@ -514,10 +546,10 @@
   i32.store8
   local.get $2
  )
- (func $~lib/allocator/arena/__memory_free (; 9 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/allocator/arena/__memory_free (; 13 ;) (type $FUNCSIG$vi) (param $0 i32)
   nop
  )
- (func $assembly/wasa/IO.writeStringLn (; 10 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/wasa/IO.writeStringLn (; 14 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -532,14 +564,14 @@
   local.get $1
   call $~lib/string/String#toUTF8
   local.set $3
-  block $~lib/memory/memory.allocate|inlined.1 (result i32)
+  block $~lib/memory/memory.allocate|inlined.4 (result i32)
    i32.const 4
    i32.const 4
    i32.mul
    local.set $4
    local.get $4
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.1
+   br $~lib/memory/memory.allocate|inlined.4
   end
   local.set $4
   local.get $4
@@ -550,12 +582,12 @@
   i32.add
   local.get $2
   i32.store
-  block $~lib/memory/memory.allocate|inlined.2 (result i32)
+  block $~lib/memory/memory.allocate|inlined.5 (result i32)
    i32.const 1
    local.set $5
    local.get $5
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.2
+   br $~lib/memory/memory.allocate|inlined.5
   end
   local.set $5
   local.get $5
@@ -575,12 +607,12 @@
   i32.add
   i32.const 1
   i32.store
-  block $~lib/memory/memory.allocate|inlined.3 (result i32)
+  block $~lib/memory/memory.allocate|inlined.6 (result i32)
    i32.const 4
    local.set $6
    local.get $6
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.3
+   br $~lib/memory/memory.allocate|inlined.6
   end
   local.set $6
   local.get $0
@@ -618,7 +650,7 @@
    br $~lib/memory/memory.free|inlined.3
   end
  )
- (func $assembly/wasa/IO.writeString (; 11 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $assembly/wasa/IO.writeString (; 15 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -641,14 +673,14 @@
   local.get $1
   call $~lib/string/String#toUTF8
   local.set $4
-  block $~lib/memory/memory.allocate|inlined.4 (result i32)
+  block $~lib/memory/memory.allocate|inlined.7 (result i32)
    i32.const 2
    i32.const 4
    i32.mul
    local.set $5
    local.get $5
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.4
+   br $~lib/memory/memory.allocate|inlined.7
   end
   local.set $5
   local.get $5
@@ -659,12 +691,12 @@
   i32.add
   local.get $3
   i32.store
-  block $~lib/memory/memory.allocate|inlined.5 (result i32)
+  block $~lib/memory/memory.allocate|inlined.8 (result i32)
    i32.const 4
    local.set $6
    local.get $6
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.5
+   br $~lib/memory/memory.allocate|inlined.8
   end
   local.set $6
   local.get $0
@@ -695,18 +727,18 @@
    br $~lib/memory/memory.free|inlined.6
   end
  )
- (func $assembly/wasa/Console.error (; 12 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/wasa/Console.error (; 16 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   i32.const 2
   local.get $0
   local.get $1
   call $assembly/wasa/IO.writeString
  )
- (func $assembly/env/wasiabort (; 13 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+ (func $assembly/env/wasiabort (; 17 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
   local.get $0
   i32.const 1
   call $assembly/wasa/Console.error
  )
- (func $~lib/internal/string/allocateUnsafe (; 14 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/string/allocateUnsafe (; 18 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -723,13 +755,13 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 88
+   i32.const 184
    i32.const 14
    i32.const 2
    call $assembly/env/wasiabort
    unreachable
   end
-  block $~lib/memory/memory.allocate|inlined.6 (result i32)
+  block $~lib/memory/memory.allocate|inlined.12 (result i32)
    i32.const 4
    local.get $0
    i32.const 1
@@ -738,7 +770,7 @@
    local.set $1
    local.get $1
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.6
+   br $~lib/memory/memory.allocate|inlined.12
   end
   local.set $2
   local.get $2
@@ -746,7 +778,7 @@
   i32.store
   local.get $2
  )
- (func $~lib/internal/memory/memcpy (; 15 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/internal/memory/memcpy (; 19 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -1947,7 +1979,7 @@
    i32.store8
   end
  )
- (func $~lib/internal/memory/memmove (; 16 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/internal/memory/memmove (; 20 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   local.get $0
   local.get $1
@@ -2174,166 +2206,7 @@
    end
   end
  )
- (func $~lib/internal/string/copyUnsafe (; 17 ;) (type $FUNCSIG$viiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  local.get $0
-  local.get $1
-  i32.const 1
-  i32.shl
-  i32.add
-  i32.const 4
-  i32.add
-  local.set $5
-  local.get $2
-  local.get $3
-  i32.const 1
-  i32.shl
-  i32.add
-  i32.const 4
-  i32.add
-  local.set $6
-  local.get $4
-  i32.const 1
-  i32.shl
-  local.set $7
-  local.get $5
-  local.get $6
-  local.get $7
-  call $~lib/internal/memory/memmove
- )
- (func $~lib/string/String#concat (; 18 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  local.get $0
-  i32.const 0
-  i32.ne
-  i32.eqz
-  if
-   i32.const 0
-   i32.const 48
-   i32.const 110
-   i32.const 4
-   call $assembly/env/wasiabort
-   unreachable
-  end
-  local.get $1
-  i32.const 0
-  i32.eq
-  if
-   i32.const 32
-   local.set $1
-  end
-  local.get $0
-  i32.load
-  local.set $2
-  local.get $1
-  i32.load
-  local.set $3
-  local.get $2
-  local.get $3
-  i32.add
-  local.set $4
-  local.get $4
-  i32.const 0
-  i32.eq
-  if
-   i32.const 80
-   return
-  end
-  local.get $4
-  call $~lib/internal/string/allocateUnsafe
-  local.set $5
-  local.get $5
-  i32.const 0
-  local.get $0
-  i32.const 0
-  local.get $2
-  call $~lib/internal/string/copyUnsafe
-  local.get $5
-  local.get $2
-  local.get $1
-  i32.const 0
-  local.get $3
-  call $~lib/internal/string/copyUnsafe
-  local.get $5
- )
- (func $~lib/string/String.__concat (; 19 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  i32.eqz
-  if
-   i32.const 32
-   local.set $0
-  end
-  local.get $0
-  local.get $1
-  call $~lib/string/String#concat
- )
- (func $start:assembly/ansi (; 20 ;) (type $FUNCSIG$v)
-  i32.const 8
-  i32.const 16
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/GREEN
-  i32.const 8
-  i32.const 144
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/WHITE
-  i32.const 8
-  i32.const 160
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/RED
-  i32.const 8
-  i32.const 176
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/CYAN
-  i32.const 8
-  i32.const 192
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/RESET
-  i32.const 8
-  i32.const 200
-  call $~lib/string/String.__concat
-  global.set $assembly/ansi/HIDE_CURSOR
- )
- (func $start:assembly/cli (; 21 ;) (type $FUNCSIG$v)
-  call $start:assembly/ansi
- )
- (func $start:assembly/utils (; 22 ;) (type $FUNCSIG$v)
-  (local $0 i32)
-  block $~lib/memory/memory.allocate|inlined.7 (result i32)
-   i32.const 1
-   local.set $0
-   local.get $0
-   call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.7
-  end
-  global.set $assembly/utils/randomBytePointer
-  block $~lib/memory/memory.allocate|inlined.8 (result i32)
-   i32.const 8
-   local.set $0
-   local.get $0
-   call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.8
-  end
-  global.set $assembly/utils/timeCounterPointer
- )
- (func $start:assembly/droplet (; 23 ;) (type $FUNCSIG$v)
-  call $start:assembly/utils
- )
- (func $start:assembly/index (; 24 ;) (type $FUNCSIG$v)
-  call $start:~lib/allocator/arena
-  call $start:assembly/cli
-  call $start:assembly/droplet
- )
- (func $~lib/memory/memory.allocate (; 25 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
-  local.get $0
-  call $~lib/allocator/arena/__memory_allocate
-  return
- )
- (func $~lib/string/String.fromUTF8 (; 26 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String.fromUTF8 (; 21 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -2345,19 +2218,19 @@
   i32.const 1
   i32.lt_u
   if
-   i32.const 80
+   i32.const 144
    return
   end
   i32.const 0
   local.set $2
-  block $~lib/memory/memory.allocate|inlined.12 (result i32)
+  block $~lib/memory/memory.allocate|inlined.11 (result i32)
    local.get $1
    i32.const 1
    i32.shl
    local.set $3
    local.get $3
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.12
+   br $~lib/memory/memory.allocate|inlined.11
   end
   local.set $4
   i32.const 0
@@ -2415,7 +2288,7 @@
         i32.eqz
         if
          i32.const 0
-         i32.const 48
+         i32.const 152
          i32.const 512
          i32.const 8
          call $assembly/env/wasiabort
@@ -2469,7 +2342,7 @@
          i32.eqz
          if
           i32.const 0
-          i32.const 48
+          i32.const 152
           i32.const 516
           i32.const 8
           call $assembly/env/wasiabort
@@ -2564,7 +2437,7 @@
          i32.eqz
          if
           i32.const 0
-          i32.const 48
+          i32.const 152
           i32.const 528
           i32.const 8
           call $assembly/env/wasiabort
@@ -2627,7 +2500,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 48
+   i32.const 152
    i32.const 537
    i32.const 4
    call $assembly/env/wasiabort
@@ -2638,7 +2511,7 @@
   i32.shr_u
   call $~lib/internal/string/allocateUnsafe
   local.set $7
-  block $~lib/memory/memory.copy|inlined.1
+  block $~lib/memory/memory.copy|inlined.0
    local.get $7
    i32.const 4
    i32.add
@@ -2661,7 +2534,7 @@
   end
   local.get $7
  )
- (func $assembly/wasa/StringUtils.fromCString (; 27 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/wasa/StringUtils.fromCString (; 22 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   i32.const 0
   local.set $1
@@ -2686,7 +2559,7 @@
   local.get $1
   call $~lib/string/String.fromUTF8
  )
- (func $~lib/internal/arraybuffer/computeSize (; 28 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/arraybuffer/computeSize (; 23 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   i32.const 1
   i32.const 32
   local.get $0
@@ -2698,7 +2571,7 @@
   i32.sub
   i32.shl
  )
- (func $~lib/internal/arraybuffer/allocateUnsafe (; 29 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/arraybuffer/allocateUnsafe (; 24 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -2707,7 +2580,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 264
+   i32.const 272
    i32.const 26
    i32.const 2
    call $assembly/env/wasiabort
@@ -2727,7 +2600,7 @@
   i32.store
   local.get $1
  )
- (func $~lib/internal/memory/memset (; 30 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/internal/memory/memset (; 25 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i64)
@@ -2981,7 +2854,7 @@
    end
   end
  )
- (func $~lib/internal/arraybuffer/reallocateUnsafe (; 31 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/internal/arraybuffer/reallocateUnsafe (; 26 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3000,7 +2873,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 264
+    i32.const 272
     i32.const 40
     i32.const 4
     call $assembly/env/wasiabort
@@ -3020,7 +2893,7 @@
     local.get $1
     call $~lib/internal/arraybuffer/allocateUnsafe
     local.set $3
-    block $~lib/memory/memory.copy|inlined.2
+    block $~lib/memory/memory.copy|inlined.1
      local.get $3
      i32.const 8
      i32.add
@@ -3075,7 +2948,7 @@
     i32.eqz
     if
      i32.const 0
-     i32.const 264
+     i32.const 272
      i32.const 62
      i32.const 4
      call $assembly/env/wasiabort
@@ -3088,7 +2961,7 @@
   end
   local.get $0
  )
- (func $~lib/array/Array<~lib/string/String>#push (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/string/String>#push (; 27 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3121,7 +2994,7 @@
    i32.ge_u
    if
     i32.const 0
-    i32.const 232
+    i32.const 240
     i32.const 182
     i32.const 42
     call $assembly/env/wasiabort
@@ -3161,7 +3034,7 @@
   end
   local.get $5
  )
- (func $assembly/wasa/CommandLine#constructor (; 33 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/wasa/CommandLine#constructor (; 28 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -3184,16 +3057,16 @@
    i32.store
    local.get $0
   end
-  i32.const 224
+  i32.const 136
   i32.store
-  block $~lib/memory/memory.allocate|inlined.9 (result i32)
+  block $~lib/memory/memory.allocate|inlined.2 (result i32)
    i32.const 2
    i32.const 4
    i32.mul
    local.set $1
    local.get $1
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.9
+   br $~lib/memory/memory.allocate|inlined.2
   end
   local.set $1
   local.get $1
@@ -3208,8 +3081,8 @@
   i32.const 0
   i32.ne
   if
-   i32.const 80
-   i32.const 80
+   i32.const 144
+   i32.const 144
    i32.const 0
    i32.const 0
    call $assembly/env/wasiabort
@@ -3222,7 +3095,7 @@
   i32.add
   i32.load
   local.set $4
-  block $~lib/memory/memory.allocate|inlined.10 (result i32)
+  block $~lib/memory/memory.allocate|inlined.9 (result i32)
    local.get $3
    i32.const 1
    i32.add
@@ -3231,15 +3104,15 @@
    local.set $5
    local.get $5
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.10
+   br $~lib/memory/memory.allocate|inlined.9
   end
   local.set $5
-  block $~lib/memory/memory.allocate|inlined.11 (result i32)
+  block $~lib/memory/memory.allocate|inlined.10 (result i32)
    local.get $4
    local.set $6
    local.get $6
    call $~lib/allocator/arena/__memory_allocate
-   br $~lib/memory/memory.allocate|inlined.11
+   br $~lib/memory/memory.allocate|inlined.10
   end
   local.set $6
   local.get $5
@@ -3250,8 +3123,8 @@
   i32.const 0
   i32.ne
   if
-   i32.const 80
-   i32.const 80
+   i32.const 144
+   i32.const 144
    i32.const 0
    i32.const 0
    call $assembly/env/wasiabort
@@ -3314,22 +3187,120 @@
   end
   local.get $0
  )
- (func $assembly/wasa/CommandLine#all (; 34 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/wasa/CommandLine#all (; 29 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.load
  )
- (func $assembly/wasa/Console.write (; 35 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/wasa/Console.write (; 30 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   i32.const 1
   local.get $0
   local.get $1
   call $assembly/wasa/IO.writeString
  )
- (func $assembly/wasa/Console.log (; 36 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/wasa/Console.log (; 31 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   i32.const 1
   call $assembly/wasa/Console.write
  )
- (func $assembly/ansi/printColor (; 37 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/internal/string/copyUnsafe (; 32 ;) (type $FUNCSIG$viiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  local.get $0
+  local.get $1
+  i32.const 1
+  i32.shl
+  i32.add
+  i32.const 4
+  i32.add
+  local.set $5
+  local.get $2
+  local.get $3
+  i32.const 1
+  i32.shl
+  i32.add
+  i32.const 4
+  i32.add
+  local.set $6
+  local.get $4
+  i32.const 1
+  i32.shl
+  local.set $7
+  local.get $5
+  local.get $6
+  local.get $7
+  call $~lib/internal/memory/memmove
+ )
+ (func $~lib/string/String#concat (; 33 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  local.get $0
+  i32.const 0
+  i32.ne
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 152
+   i32.const 110
+   i32.const 4
+   call $assembly/env/wasiabort
+   unreachable
+  end
+  local.get $1
+  i32.const 0
+  i32.eq
+  if
+   i32.const 368
+   local.set $1
+  end
+  local.get $0
+  i32.load
+  local.set $2
+  local.get $1
+  i32.load
+  local.set $3
+  local.get $2
+  local.get $3
+  i32.add
+  local.set $4
+  local.get $4
+  i32.const 0
+  i32.eq
+  if
+   i32.const 144
+   return
+  end
+  local.get $4
+  call $~lib/internal/string/allocateUnsafe
+  local.set $5
+  local.get $5
+  i32.const 0
+  local.get $0
+  i32.const 0
+  local.get $2
+  call $~lib/internal/string/copyUnsafe
+  local.get $5
+  local.get $2
+  local.get $1
+  i32.const 0
+  local.get $3
+  call $~lib/internal/string/copyUnsafe
+  local.get $5
+ )
+ (func $~lib/string/String.__concat (; 34 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  i32.eqz
+  if
+   i32.const 368
+   local.set $0
+  end
+  local.get $0
+  local.get $1
+  call $~lib/string/String#concat
+ )
+ (func $assembly/ansi/printColor (; 35 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   local.get $1
   local.get $0
   call $~lib/string/String.__concat
@@ -3338,66 +3309,66 @@
   i32.const 0
   call $assembly/wasa/Console.write
  )
- (func $assembly/cli/showHelp (; 38 ;) (type $FUNCSIG$v)
-  i32.const 80
+ (func $assembly/cli/showHelp (; 36 ;) (type $FUNCSIG$v)
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 328
+  i32.const 336
   global.get $assembly/ansi/GREEN
   call $assembly/ansi/printColor
-  i32.const 80
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 360
+  i32.const 384
   global.get $assembly/ansi/CYAN
   call $assembly/ansi/printColor
-  i32.const 80
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 376
+  i32.const 400
   call $assembly/wasa/Console.log
-  i32.const 80
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 472
+  i32.const 496
   global.get $assembly/ansi/CYAN
   call $assembly/ansi/printColor
-  i32.const 80
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 488
+  i32.const 512
   global.get $assembly/ansi/RED
   call $~lib/string/String.__concat
-  i32.const 520
-  call $~lib/string/String.__concat
-  global.get $assembly/ansi/RESET
-  call $~lib/string/String.__concat
-  call $assembly/wasa/Console.log
   i32.const 544
-  call $assembly/wasa/Console.log
-  i32.const 640
-  call $assembly/wasa/Console.log
-  i32.const 80
-  call $assembly/wasa/Console.log
-  i32.const 736
-  global.get $assembly/ansi/RED
-  call $~lib/string/String.__concat
-  i32.const 520
   call $~lib/string/String.__concat
   global.get $assembly/ansi/RESET
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
-  i32.const 768
+  i32.const 568
   call $assembly/wasa/Console.log
-  i32.const 848
+  i32.const 664
   call $assembly/wasa/Console.log
-  i32.const 80
+  i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 952
+  i32.const 760
+  global.get $assembly/ansi/RED
+  call $~lib/string/String.__concat
+  i32.const 544
+  call $~lib/string/String.__concat
+  global.get $assembly/ansi/RESET
+  call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
-  i32.const 984
+  i32.const 792
   call $assembly/wasa/Console.log
-  i32.const 1032
+  i32.const 872
   call $assembly/wasa/Console.log
-  i32.const 80
+  i32.const 144
+  call $assembly/wasa/Console.log
+  i32.const 976
+  call $assembly/wasa/Console.log
+  i32.const 1008
+  call $assembly/wasa/Console.log
+  i32.const 1056
+  call $assembly/wasa/Console.log
+  i32.const 144
   call $assembly/wasa/Console.log
  )
- (func $~lib/array/Array<~lib/string/String>#__get (; 39 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/string/String>#__get (; 37 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3430,7 +3401,7 @@
    unreachable
   end
  )
- (func $~lib/internal/string/compareUnsafe (; 40 ;) (type $FUNCSIG$iiiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
+ (func $~lib/internal/string/compareUnsafe (; 38 ;) (type $FUNCSIG$iiiiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
@@ -3483,7 +3454,7 @@
   end
   local.get $5
  )
- (func $~lib/string/String.__eq (; 41 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/string/String.__eq (; 39 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -3527,7 +3498,7 @@
   call $~lib/internal/string/compareUnsafe
   i32.eqz
  )
- (func $~lib/internal/string/parse<f64> (; 42 ;) (type $FUNCSIG$dii) (param $0 i32) (param $1 i32) (result f64)
+ (func $~lib/internal/string/parse<f64> (; 40 ;) (type $FUNCSIG$dii) (param $0 i32) (param $1 i32) (result f64)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3828,12 +3799,12 @@
   local.get $7
   f64.mul
  )
- (func $~lib/string/parseInt (; 43 ;) (type $FUNCSIG$dii) (param $0 i32) (param $1 i32) (result f64)
+ (func $~lib/string/parseInt (; 41 ;) (type $FUNCSIG$dii) (param $0 i32) (param $1 i32) (result f64)
   local.get $0
   local.get $1
   call $~lib/internal/string/parse<f64>
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#constructor (; 44 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#constructor (; 42 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3844,7 +3815,7 @@
   i32.gt_u
   if
    i32.const 0
-   i32.const 232
+   i32.const 240
    i32.const 45
    i32.const 39
    call $assembly/env/wasiabort
@@ -3894,7 +3865,7 @@
   end
   local.get $0
  )
- (func $assembly/droplet/Droplet#constructor (; 45 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $assembly/droplet/Droplet#constructor (; 43 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   i32.eqz
   if
@@ -3919,7 +3890,7 @@
   i32.store offset=16
   local.get $0
  )
- (func $assembly/utils/getRandomNumber (; 46 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/utils/getRandomNumber (; 44 ;) (type $FUNCSIG$i) (result i32)
   global.get $assembly/utils/randomBytePointer
   i32.const 1
   call $~lib/bindings/wasi_unstable/random_get
@@ -3928,8 +3899,8 @@
   i32.const 0
   i32.ne
   if
-   i32.const 80
-   i32.const 80
+   i32.const 144
+   i32.const 144
    i32.const 0
    i32.const 0
    call $assembly/env/wasiabort
@@ -3937,7 +3908,7 @@
   global.get $assembly/utils/randomBytePointer
   i32.load8_u
  )
- (func $~lib/array/Array<u8>#constructor (; 47 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u8>#constructor (; 45 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -3948,7 +3919,7 @@
   i32.gt_u
   if
    i32.const 0
-   i32.const 232
+   i32.const 240
    i32.const 45
    i32.const 39
    call $assembly/env/wasiabort
@@ -3998,7 +3969,7 @@
   end
   local.get $0
  )
- (func $assembly/characters/getRandomCharacterCode (; 48 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/characters/getRandomCharacterCode (; 46 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   local.get $1
@@ -4019,7 +3990,7 @@
   local.get $0
   i32.add
  )
- (func $~lib/array/Array<u8>#__set (; 49 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<u8>#__set (; 47 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -4043,7 +4014,7 @@
    i32.ge_u
    if
     i32.const 0
-    i32.const 232
+    i32.const 240
     i32.const 107
     i32.const 41
     call $assembly/env/wasiabort
@@ -4086,7 +4057,7 @@
    i32.store8 offset=8
   end
  )
- (func $assembly/droplet/createDroplet (; 50 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/droplet/createDroplet (; 48 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   i32.const 0
@@ -4103,16 +4074,16 @@
   local.get $2
   call $assembly/utils/getRandomNumber
   local.get $1
-  i32.const 2
-  i32.div_s
+  i32.const 1
+  i32.shr_u
   i32.rem_s
   i32.const 3
   i32.add
   i32.store offset=16
   local.get $2
   call $assembly/utils/getRandomNumber
-  i32.const 2
-  i32.rem_s
+  i32.const 1
+  i32.and
   i32.const 1
   i32.add
   i32.store offset=12
@@ -4150,7 +4121,7 @@
   end
   local.get $2
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#__set (; 51 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#__set (; 49 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -4174,7 +4145,7 @@
    i32.ge_u
    if
     i32.const 0
-    i32.const 232
+    i32.const 240
     i32.const 107
     i32.const 41
     call $assembly/env/wasiabort
@@ -4217,7 +4188,7 @@
    i32.store offset=8
   end
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#__get (; 52 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#__get (; 50 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -4250,7 +4221,7 @@
    unreachable
   end
  )
- (func $~lib/array/Array<u8>#__get (; 53 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u8>#__get (; 51 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -4283,15 +4254,15 @@
    unreachable
   end
  )
- (func $assembly/utils/rotateArrayRight (; 54 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/utils/rotateArrayRight (; 52 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
+  (local $3 i32)
   block $break|0
-   i32.const 0
-   local.set $1
-   loop $repeat|0
-    local.get $1
-    block $~lib/array/Array<u8>#get:length|inlined.1 (result i32)
+   block
+    i32.const 0
+    local.set $1
+    block $~lib/array/Array<u8>#get:length|inlined.0 (result i32)
      local.get $0
      local.set $2
      local.get $2
@@ -4299,6 +4270,11 @@
     end
     i32.const 1
     i32.sub
+    local.set $2
+   end
+   loop $repeat|0
+    local.get $1
+    local.get $2
     i32.lt_s
     i32.eqz
     br_if $break|0
@@ -4308,7 +4284,7 @@
      i32.const 1
      i32.add
      call $~lib/array/Array<u8>#__get
-     local.set $2
+     local.set $3
      local.get $0
      local.get $1
      i32.const 1
@@ -4319,7 +4295,7 @@
      call $~lib/array/Array<u8>#__set
      local.get $0
      local.get $1
-     local.get $2
+     local.get $3
      call $~lib/array/Array<u8>#__set
     end
     local.get $1
@@ -4332,13 +4308,16 @@
    unreachable
   end
  )
- (func $assembly/droplet/updateDroplet (; 55 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/droplet/updateDroplet (; 53 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  i32.load offset=12
+  local.set $2
   local.get $0
   local.get $0
   i32.load offset=4
-  local.get $0
-  i32.load offset=12
+  local.get $2
   i32.add
   i32.store offset=4
   local.get $0
@@ -4358,21 +4337,20 @@
   end
   block $break|0
    i32.const 0
-   local.set $2
+   local.set $3
    loop $repeat|0
+    local.get $3
     local.get $2
-    local.get $0
-    i32.load offset=12
     i32.lt_s
     i32.eqz
     br_if $break|0
     local.get $0
     i32.load offset=8
     call $assembly/utils/rotateArrayRight
-    local.get $2
+    local.get $3
     i32.const 1
     i32.add
-    local.set $2
+    local.set $3
     br $repeat|0
     unreachable
    end
@@ -4380,39 +4358,36 @@
   end
   block $break|1
    i32.const 0
-   local.set $2
+   local.set $3
    loop $repeat|1
+    local.get $3
     local.get $2
-    local.get $0
-    i32.load offset=12
     i32.lt_s
     i32.eqz
     br_if $break|1
     local.get $0
     i32.load offset=8
-    local.get $2
+    local.get $3
     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_START
     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_END
     call $assembly/characters/getRandomCharacterCode
     call $~lib/array/Array<u8>#__set
-    local.get $2
+    local.get $3
     i32.const 1
     i32.add
-    local.set $2
+    local.set $3
     br $repeat|1
     unreachable
    end
    unreachable
   end
  )
- (func $assembly/ansi/flushConsole (; 56 ;) (type $FUNCSIG$v)
-  global.get $assembly/ansi/ESC
-  i32.const 1448
-  call $~lib/string/String.__concat
+ (func $assembly/ansi/flushConsole (; 54 ;) (type $FUNCSIG$v)
+  global.get $assembly/ansi/FLUSH
   i32.const 0
   call $assembly/wasa/Console.write
  )
- (func $~lib/internal/number/decimalCount32 (; 57 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/number/decimalCount32 (; 55 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
   i32.const 100000
@@ -4481,7 +4456,7 @@
   unreachable
   unreachable
  )
- (func $~lib/internal/number/utoa32_lut (; 58 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/internal/number/utoa32_lut (; 56 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
@@ -4492,7 +4467,7 @@
   (local $10 i32)
   (local $11 i64)
   (local $12 i64)
-  i32.const 1976
+  i32.const 1992
   i32.load
   local.set $3
   block $break|0
@@ -4667,7 +4642,7 @@
    i32.store16 offset=4
   end
  )
- (func $~lib/internal/number/itoa32 (; 59 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/number/itoa32 (; 57 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -4677,7 +4652,7 @@
   local.get $0
   i32.eqz
   if
-   i32.const 1456
+   i32.const 1472
    return
   end
   local.get $0
@@ -4719,27 +4694,27 @@
   end
   local.get $3
  )
- (func $~lib/internal/number/itoa<i32> (; 60 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/internal/number/itoa<i32> (; 58 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/internal/number/itoa32
   return
  )
- (func $~lib/number/I32#toString (; 61 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/number/I32#toString (; 59 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   local.get $0
   call $~lib/internal/number/itoa<i32>
  )
- (func $assembly/ansi/moveCursorToPosition (; 62 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/ansi/moveCursorToPosition (; 60 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   global.get $assembly/ansi/ESC
   local.get $1
   call $~lib/number/I32#toString
   call $~lib/string/String.__concat
-  i32.const 1984
+  i32.const 2000
   call $~lib/string/String.__concat
   local.get $0
   call $~lib/number/I32#toString
   call $~lib/string/String.__concat
-  i32.const 1992
+  i32.const 2008
   call $~lib/string/String.__concat
   local.set $2
   local.get $2
@@ -4749,7 +4724,7 @@
   i32.const 0
   call $assembly/wasa/Console.write
  )
- (func $~lib/string/String.fromCharCode (; 63 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/string/String.fromCharCode (; 61 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   i32.const 1
   call $~lib/internal/string/allocateUnsafe
@@ -4759,23 +4734,27 @@
   i32.store16 offset=4
   local.get $1
  )
- (func $assembly/droplet/drawDroplet (; 64 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/droplet/drawDroplet (; 62 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   block $break|0
-   i32.const 0
-   local.set $2
-   loop $repeat|0
-    local.get $2
-    block $~lib/array/Array<u8>#get:length|inlined.3 (result i32)
+   block
+    i32.const 0
+    local.set $2
+    block $~lib/array/Array<u8>#get:length|inlined.1 (result i32)
      local.get $0
      i32.load offset=8
      local.set $3
      local.get $3
      i32.load offset=4
     end
+    local.set $3
+   end
+   loop $repeat|0
+    local.get $2
+    local.get $3
     i32.lt_s
     i32.eqz
     br_if $break|0
@@ -4784,40 +4763,34 @@
      i32.load offset=4
      local.get $2
      i32.add
-     local.set $3
-     local.get $3
+     local.set $4
+     local.get $4
      i32.const 0
      i32.ge_s
-     local.tee $4
+     local.tee $5
      if (result i32)
-      local.get $3
+      local.get $4
       local.get $1
       i32.le_s
      else      
-      local.get $4
+      local.get $5
      end
      if
       local.get $0
       i32.load
-      local.get $3
+      local.get $4
       call $assembly/ansi/moveCursorToPosition
-      global.get $assembly/ansi/GREEN
-      local.set $4
       local.get $2
-      block $~lib/array/Array<u8>#get:length|inlined.5 (result i32)
-       local.get $0
-       i32.load offset=8
-       local.set $5
-       local.get $5
-       i32.load offset=4
-      end
+      local.get $3
       i32.const 1
       i32.sub
       i32.eq
-      if
+      if (result i32)
        global.get $assembly/ansi/WHITE
-       local.set $4
+      else       
+       global.get $assembly/ansi/GREEN
       end
+      local.set $5
       local.get $0
       i32.load offset=8
       local.get $2
@@ -4825,7 +4798,7 @@
       i32.const 255
       i32.and
       call $~lib/string/String.fromCharCode
-      local.get $4
+      local.get $5
       call $assembly/ansi/printColor
      end
     end
@@ -4839,7 +4812,7 @@
    unreachable
   end
  )
- (func $assembly/utils/getTimeCounter (; 65 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/utils/now (; 63 ;) (type $FUNCSIG$i) (result i32)
   (local $0 i64)
   i32.const 0
   i64.const 1000
@@ -4854,47 +4827,38 @@
   i64.div_u
   i32.wrap_i64
  )
- (func $assembly/utils/sleep (; 66 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/utils/sleep (; 64 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  call $assembly/utils/getTimeCounter
+  call $assembly/utils/now
   local.set $1
-  i32.const 1
-  local.set $2
   block $break|0
    loop $continue|0
-    local.get $2
+    i32.const 1
     if
-     block
-      call $assembly/utils/getTimeCounter
-      local.set $3
-      local.get $1
-      local.get $3
-      i32.sub
-      local.tee $4
-      i32.const 31
-      i32.shr_s
-      local.tee $5
-      local.get $4
-      i32.add
-      local.get $5
-      i32.xor
-      local.get $0
-      i32.gt_s
-      if
-       i32.const 0
-       local.set $2
-      end
+     local.get $1
+     call $assembly/utils/now
+     i32.sub
+     local.tee $2
+     i32.const 31
+     i32.shr_s
+     local.tee $3
+     local.get $2
+     i32.add
+     local.get $3
+     i32.xor
+     local.get $0
+     i32.gt_s
+     if
+      return
      end
      br $continue|0
     end
    end
   end
  )
- (func $assembly/index/_start (; 67 ;) (type $FUNCSIG$v)
+ (func $assembly/index/_start (; 65 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -4903,6 +4867,7 @@
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
+  (local $8 i32)
   i32.const 80
   local.set $0
   i32.const 24
@@ -4928,16 +4893,20 @@
    return
   end
   block $break|0
-   i32.const 0
-   local.set $5
-   loop $repeat|0
-    local.get $5
-    block $~lib/array/Array<~lib/string/String>#get:length|inlined.3 (result i32)
+   block
+    i32.const 0
+    local.set $5
+    block $~lib/array/Array<~lib/string/String>#get:length|inlined.2 (result i32)
      local.get $4
      local.set $6
      local.get $6
      i32.load offset=4
     end
+    local.set $6
+   end
+   loop $repeat|0
+    local.get $5
+    local.get $6
     i32.lt_s
     i32.eqz
     br_if $break|0
@@ -4945,16 +4914,16 @@
      local.get $4
      local.get $5
      call $~lib/array/Array<~lib/string/String>#__get
-     local.set $6
-     local.get $6
-     i32.const 1088
+     local.set $7
+     local.get $7
+     i32.const 1112
      call $~lib/string/String.__eq
-     local.tee $7
+     local.tee $8
      if (result i32)
-      local.get $7
+      local.get $8
      else      
-      local.get $6
-      i32.const 1096
+      local.get $7
+      i32.const 1120
       call $~lib/string/String.__eq
      end
      if
@@ -4975,21 +4944,21 @@
       i32.const 1
       i32.lt_s
       if
-       i32.const 1120
+       i32.const 1144
        global.get $assembly/ansi/RED
        call $assembly/ansi/printColor
        return
       end
      else      
-      local.get $6
-      i32.const 1200
+      local.get $7
+      i32.const 1224
       call $~lib/string/String.__eq
-      local.tee $7
+      local.tee $8
       if (result i32)
-       local.get $7
+       local.get $8
       else       
-       local.get $6
-       i32.const 1208
+       local.get $7
+       i32.const 1232
        call $~lib/string/String.__eq
       end
       if
@@ -5010,21 +4979,21 @@
        i32.const 1
        i32.lt_s
        if
-        i32.const 1232
+        i32.const 1256
         global.get $assembly/ansi/RED
         call $assembly/ansi/printColor
         return
        end
       else       
-       local.get $6
-       i32.const 1320
+       local.get $7
+       i32.const 1344
        call $~lib/string/String.__eq
-       local.tee $7
+       local.tee $8
        if (result i32)
-        local.get $7
+        local.get $8
        else        
-        local.get $6
-        i32.const 1328
+        local.get $7
+        i32.const 1352
         call $~lib/string/String.__eq
        end
        if
@@ -5044,30 +5013,30 @@
         local.get $2
         i32.const 1
         i32.lt_s
-        local.tee $7
+        local.tee $8
         if (result i32)
-         local.get $7
+         local.get $8
         else         
          local.get $2
          i32.const 20
          i32.gt_s
         end
         if
-         i32.const 1352
+         i32.const 1376
          global.get $assembly/ansi/RED
          call $assembly/ansi/printColor
          return
         end
        else        
-        local.get $6
-        i32.const 1424
+        local.get $7
+        i32.const 1448
         call $~lib/string/String.__eq
-        local.tee $7
+        local.tee $8
         if (result i32)
-         local.get $7
+         local.get $8
         else         
-         local.get $6
-         i32.const 1432
+         local.get $7
+         i32.const 1456
          call $~lib/string/String.__eq
         end
         if
@@ -5090,26 +5059,26 @@
   i32.const 0
   local.get $0
   call $~lib/array/Array<assembly/droplet/Droplet>#constructor
-  local.set $5
+  local.set $6
   block $break|1
    i32.const 0
-   local.set $6
+   local.set $5
    loop $repeat|1
-    local.get $6
+    local.get $5
     local.get $0
     i32.lt_s
     i32.eqz
     br_if $break|1
+    local.get $6
     local.get $5
-    local.get $6
-    local.get $6
+    local.get $5
     local.get $1
     call $assembly/droplet/createDroplet
     call $~lib/array/Array<assembly/droplet/Droplet>#__set
-    local.get $6
+    local.get $5
     i32.const 1
     i32.add
-    local.set $6
+    local.set $5
     br $repeat|1
     unreachable
    end
@@ -5122,27 +5091,22 @@
      block
       block $break|3
        i32.const 0
-       local.set $6
+       local.set $5
        loop $repeat|3
-        local.get $6
-        block $~lib/array/Array<assembly/droplet/Droplet>#get:length|inlined.1 (result i32)
-         local.get $5
-         local.set $7
-         local.get $7
-         i32.load offset=4
-        end
+        local.get $5
+        local.get $0
         i32.lt_s
         i32.eqz
         br_if $break|3
-        local.get $5
         local.get $6
+        local.get $5
         call $~lib/array/Array<assembly/droplet/Droplet>#__get
         local.get $1
         call $assembly/droplet/updateDroplet
-        local.get $6
+        local.get $5
         i32.const 1
         i32.add
-        local.set $6
+        local.set $5
         br $repeat|3
         unreachable
        end
@@ -5151,27 +5115,22 @@
       call $assembly/ansi/flushConsole
       block $break|4
        i32.const 0
-       local.set $6
+       local.set $5
        loop $repeat|4
-        local.get $6
-        block $~lib/array/Array<assembly/droplet/Droplet>#get:length|inlined.3 (result i32)
-         local.get $5
-         local.set $7
-         local.get $7
-         i32.load offset=4
-        end
+        local.get $5
+        local.get $0
         i32.lt_s
         i32.eqz
         br_if $break|4
-        local.get $5
         local.get $6
+        local.get $5
         call $~lib/array/Array<assembly/droplet/Droplet>#__get
         local.get $1
         call $assembly/droplet/drawDroplet
-        local.get $6
+        local.get $5
         i32.const 1
         i32.add
-        local.set $6
+        local.set $5
         br $repeat|4
         unreachable
        end
@@ -5187,12 +5146,12 @@
    end
   end
  )
- (func $start (; 68 ;) (type $FUNCSIG$v)
+ (func $start (; 66 ;) (type $FUNCSIG$v)
   call $start:assembly/index
  )
- (func $null (; 69 ;) (type $FUNCSIG$v)
+ (func $null (; 67 ;) (type $FUNCSIG$v)
  )
- (func $assembly/env/wasiabort|trampoline (; 70 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+ (func $assembly/env/wasiabort|trampoline (; 68 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
   block $4of4
    block $3of4
     block $2of4
@@ -5204,10 +5163,10 @@
        end
        unreachable
       end
-      i32.const 80
+      i32.const 144
       local.set $0
      end
-     i32.const 80
+     i32.const 144
      local.set $1
     end
     i32.const 0
@@ -5222,7 +5181,7 @@
   local.get $3
   call $assembly/env/wasiabort
  )
- (func $~lib/setargc (; 71 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/setargc (; 69 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   global.set $~lib/argc
  )

@@ -14,7 +14,7 @@ export class Droplet {
   row: i32;
   // Going to use a character code array here
   // instead of a string to fix memory issues
-  characterCodeArray: Array<u8>;
+  characterCodeArray: u8[];
   speed: i32;
   height: i32;
 }
@@ -22,13 +22,13 @@ export class Droplet {
 // Function to create a droplet
 export function createDroplet(column: i32, lines: i32): Droplet {
   // Create the droplet
-  let droplet: Droplet = new Droplet();
+  let droplet = new Droplet();
 
   // Populate the droplet values
   droplet.column = column;
   droplet.row = getRandomNumber() % lines;
-  droplet.height = (getRandomNumber() % (lines / 2)) + 3;
-  droplet.speed = (getRandomNumber() % 2) + 1;
+  droplet.height = (getRandomNumber() % (lines >>> 1)) + 3;
+  droplet.speed = (getRandomNumber() & 1) + 1;
 
   // Create our initial string
   droplet.characterCodeArray = new Array<u8>(droplet.height);
@@ -44,23 +44,24 @@ export function createDroplet(column: i32, lines: i32): Droplet {
 
 // "Moves" a droplet down the screen
 export function updateDroplet(droplet: Droplet, lines: i32): void {
+  var speed = droplet.speed;
   // Increase the droplet row
-  droplet.row += droplet.speed;
+  droplet.row += speed;
 
   // Wrap the rows so it comes back from up top
   if (droplet.row >= droplet.height + lines) {
-    droplet.row = 0 - droplet.height;
+    droplet.row = -droplet.height;
   }
 
   // Rotate down the old characters
   // How many characters to rotate
-  for (let i = 0; i < droplet.speed; i++) {
+  for (let i = 0; i < speed; i++) {
     rotateArrayRight(droplet.characterCodeArray);
   }
 
   // Add some new characters
   // To replace the old rotated ones
-  for (let i = 0; i < droplet.speed; i++) {
+  for (let i = 0; i < speed; i++) {
     droplet.characterCodeArray[i] = getRandomCharacterCode(
       ENGLISH_CHARACTER_CODE_START,
       ENGLISH_CHARACTER_CODE_END
@@ -71,7 +72,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
 // Places a droplet (and its characters) onto the screen
 export function drawDroplet(droplet: Droplet, lines: i32): void {
   // Loop over our characters
-  for (let i = 0; i < droplet.characterCodeArray.length; i++) {
+  for (let i = 0, len = droplet.characterCodeArray.length; i < len; i++) {
     let cursorRow = droplet.row + i;
 
     if (cursorRow >= 0 && cursorRow <= lines) {
@@ -79,10 +80,7 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       moveCursorToPosition(droplet.column, cursorRow);
 
       // Get our color
-      let color: string = GREEN;
-      if (i === droplet.characterCodeArray.length - 1) {
-        color = WHITE;
-      }
+      let color = i === len - 1 ? WHITE : GREEN;
 
       // Draw the character
       // TODO: Optimize this, and try to remove generating / manipulating.
