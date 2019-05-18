@@ -1,6 +1,6 @@
 // Matrix Droplets
 
-import { getRandomNumber, rotateArrayRight } from "./utils";
+import { randomByte, rotateArrayRight } from "./utils";
 import {
   ENGLISH_CHARACTER_CODE_START,
   ENGLISH_CHARACTER_CODE_END,
@@ -26,9 +26,9 @@ export function createDroplet(column: i32, lines: i32): Droplet {
 
   // Populate the droplet values
   droplet.column = column;
-  droplet.row = getRandomNumber() % lines;
-  droplet.height = (getRandomNumber() % (lines >>> 1)) + 3;
-  droplet.speed = (getRandomNumber() & 1) + 1;
+  droplet.row = randomByte() % lines;
+  droplet.height = (randomByte() % (lines >>> 1)) + 3;
+  droplet.speed = (randomByte() & 1) + 1;
 
   // Create our initial string
   droplet.characterCodeArray = new Array<u8>(droplet.height);

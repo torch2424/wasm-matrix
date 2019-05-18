@@ -3890,7 +3890,7 @@
   i32.store offset=16
   local.get $0
  )
- (func $assembly/utils/getRandomNumber (; 44 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/utils/randomByte (; 44 ;) (type $FUNCSIG$i) (result i32)
   global.get $assembly/utils/randomBytePointer
   i32.const 1
   call $~lib/bindings/wasi_unstable/random_get
@@ -3984,7 +3984,7 @@
   local.get $3
   i32.xor
   local.set $2
-  call $assembly/utils/getRandomNumber
+  call $assembly/utils/randomByte
   local.get $2
   i32.rem_s
   local.get $0
@@ -4067,12 +4067,12 @@
   local.get $0
   i32.store
   local.get $2
-  call $assembly/utils/getRandomNumber
+  call $assembly/utils/randomByte
   local.get $1
   i32.rem_s
   i32.store offset=4
   local.get $2
-  call $assembly/utils/getRandomNumber
+  call $assembly/utils/randomByte
   local.get $1
   i32.const 1
   i32.shr_u
@@ -4081,7 +4081,7 @@
   i32.add
   i32.store offset=16
   local.get $2
-  call $assembly/utils/getRandomNumber
+  call $assembly/utils/randomByte
   i32.const 1
   i32.and
   i32.const 1

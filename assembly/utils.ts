@@ -4,7 +4,7 @@ import { clockid, clock_time_get, random_get, errno } from "bindings/wasi";
 
 // Our recycled random byte pointer
 let randomBytePointer = memory.allocate(sizeof<u8>());
-export function getRandomNumber(): i32 {
+export function randomByte(): i32 {
   if (random_get(randomBytePointer, 1) != errno.SUCCESS) {
     abort();
   }
