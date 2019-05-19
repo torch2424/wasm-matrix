@@ -3064,16 +3064,9 @@
  )
  (func $assembly/droplet/createDroplet (; 42 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
+  (local $3 i32)
   call $assembly/droplet/Droplet#constructor
-  local.tee $2
-  local.get $0
-  i32.store
-  local.get $2
-  call $assembly/utils/randomByte
-  local.get $1
-  i32.rem_s
-  i32.store offset=4
-  local.get $2
+  local.set $2
   call $assembly/utils/randomByte
   local.get $1
   i32.const 1
@@ -3081,7 +3074,7 @@
   i32.rem_s
   i32.const 3
   i32.add
-  i32.store offset=16
+  local.set $3
   local.get $2
   call $assembly/utils/randomByte
   i32.const 1
@@ -3090,21 +3083,28 @@
   i32.add
   i32.store offset=12
   local.get $2
+  call $assembly/utils/randomByte
+  local.get $1
+  i32.rem_s
+  i32.store offset=4
   local.get $2
-  i32.load offset=16
+  local.get $0
+  i32.store
+  local.get $2
+  local.get $3
+  i32.store offset=16
+  local.get $3
   call $~lib/array/Array<u8>#constructor
-  i32.store offset=8
+  local.set $1
   i32.const 0
   local.set $0
   loop $repeat|0
    block $break|0
     local.get $0
-    local.get $2
-    i32.load offset=16
+    local.get $3
     i32.ge_s
     br_if $break|0
-    local.get $2
-    i32.load offset=8
+    local.get $1
     local.get $0
     call $assembly/characters/getRandomCharacterCode
     call $~lib/array/Array<u8>#__set
@@ -3115,6 +3115,9 @@
     br $repeat|0
    end
   end
+  local.get $2
+  local.get $1
+  i32.store offset=8
   local.get $2
  )
  (func $~lib/array/Array<assembly/droplet/Droplet>#__set (; 43 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)

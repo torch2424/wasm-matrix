@@ -25,20 +25,21 @@ export function createDroplet(column: i32, lines: i32): Droplet {
   let droplet = new Droplet();
 
   // Populate the droplet values
-  droplet.column = column;
-  droplet.row = randomByte() % lines;
-  droplet.height = (randomByte() % (lines >>> 1)) + 3;
+  let height = (randomByte() % (lines >>> 1)) + 3;
   droplet.speed = (randomByte() & 1) + 1;
+  droplet.row = randomByte() % lines;
+  droplet.column = column;
+  droplet.height = height;
 
   // Create our initial string
-  droplet.characterCodeArray = new Array<u8>(droplet.height);
-  for (let i = 0; i < droplet.height; i++) {
-    droplet.characterCodeArray[i] = getRandomCharacterCode(
+  let chars = new Array<u8>(height);
+  for (let i = 0; i < height; i++) {
+    chars[i] = getRandomCharacterCode(
       ENGLISH_CHARACTER_CODE_START,
       ENGLISH_CHARACTER_CODE_END
     );
   }
-
+  droplet.characterCodeArray = chars;
   return droplet;
 }
 
