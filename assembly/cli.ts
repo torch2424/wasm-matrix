@@ -21,18 +21,20 @@ export function showHelp(): void {
 
   Console.log("-l, --lines " + REQUIRED);
   Console.log("Number of " + "lines (rows)" + " to render the matrix");
-  Console.log("Suggested: " + "$LINES" + " [Bash Variable], Default: " + "24");
+  Console.log(
+    "Suggested: " + "$LINES" + " [Bash Variable], Default: " + (24).toString()
+  );
   Console.log("");
 
   Console.log("-c, --columns " + REQUIRED);
   Console.log("Number of " + "columns" + " to render the matrix");
   Console.log(
-    "Suggested: " + "$COLUMNS" + " [Bash Variable], Default: " + "80"
+    "Suggested: " + "$COLUMNS" + " [Bash Variable], Default: " + (80).toString()
   );
   Console.log("");
 
   Console.log("-s, --speed");
   Console.log("Speed of the matrix");
-  Console.log("Suggested: " + "1 , " + "Default: " + "1");
+  Console.log("Suggested: " + "1 , " + "Default: " + (1).toString());
   Console.log("");
 }
