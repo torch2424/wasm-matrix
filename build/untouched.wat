@@ -4779,12 +4779,14 @@
      local.get $4
      i32.load offset=4
     end
+    i32.const 1
+    i32.sub
     local.set $4
    end
    loop $repeat|0
     local.get $3
     local.get $4
-    i32.lt_s
+    i32.le_s
     i32.eqz
     br_if $break|0
     block
@@ -4811,8 +4813,6 @@
       call $assembly/ansi/moveCursorToPosition
       local.get $3
       local.get $4
-      i32.const 1
-      i32.sub
       i32.eq
       if (result i32)
        global.get $assembly/ansi/WHITE

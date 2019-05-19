@@ -3309,11 +3309,13 @@
    i32.load offset=8
    local.tee $6
    i32.load offset=4
+   i32.const 1
+   i32.sub
    local.set $5
    loop $repeat|0
     local.get $2
     local.get $5
-    i32.ge_s
+    i32.gt_s
     br_if $break|0
     local.get $0
     i32.load offset=4
@@ -3349,10 +3351,8 @@
      local.get $4
      i32.const 48
      i32.const 32
-     local.get $5
-     i32.const 1
-     i32.sub
      local.get $2
+     local.get $5
      i32.eq
      select
      call $assembly/ansi/printColor

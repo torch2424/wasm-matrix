@@ -77,7 +77,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
 export function drawDroplet(droplet: Droplet, lines: i32): void {
   let chars = droplet.characterCodeArray;
   // Loop over our characters
-  for (let i = 0, len = chars.length; i < len; i++) {
+  for (let i = 0, last = chars.length - 1; i <= last; i++) {
     let cursorRow = droplet.row + i;
 
     if (cursorRow >= 0 && cursorRow <= lines) {
@@ -85,7 +85,7 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       moveCursorToPosition(droplet.column, cursorRow);
 
       // Get our color
-      let color = i === len - 1 ? WHITE : GREEN;
+      let color = i == last ? WHITE : GREEN;
 
       // Draw the character
       // TODO: Optimize this, and try to remove generating / manipulating.
