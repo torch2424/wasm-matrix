@@ -3216,64 +3216,66 @@
  )
  (func $assembly/droplet/updateDroplet (; 46 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  i32.load offset=8
+  local.set $2
   local.get $0
   local.get $0
   i32.load offset=12
-  local.tee $2
+  local.tee $3
   local.get $0
   i32.load offset=4
   i32.add
-  i32.store offset=4
-  local.get $0
-  i32.load offset=4
+  local.tee $4
+  local.get $1
   local.get $0
   i32.load offset=16
-  local.get $1
+  local.tee $1
   i32.add
   i32.ge_s
-  if
-   local.get $0
+  if (result i32)
    i32.const 0
-   local.get $0
-   i32.load offset=16
+   local.get $1
    i32.sub
-   i32.store offset=4
+  else   
+   local.get $4
   end
+  i32.store offset=4
   i32.const 0
-  local.set $1
+  local.set $0
   loop $repeat|0
    block $break|0
-    local.get $1
-    local.get $2
+    local.get $0
+    local.get $3
     i32.ge_s
     br_if $break|0
-    local.get $0
-    i32.load offset=8
+    local.get $2
     call $assembly/utils/rotateArrayLeft
-    local.get $1
+    local.get $0
     i32.const 1
     i32.add
-    local.set $1
+    local.set $0
     br $repeat|0
    end
   end
   i32.const 0
-  local.set $1
+  local.set $0
   loop $repeat|1
    block $break|1
-    local.get $1
-    local.get $2
+    local.get $0
+    local.get $3
     i32.ge_s
     br_if $break|1
+    local.get $2
     local.get $0
-    i32.load offset=8
-    local.get $1
     call $assembly/characters/getRandomCharacterCode
     call $~lib/array/Array<u8>#__set
-    local.get $1
+    local.get $0
     i32.const 1
     i32.add
-    local.set $1
+    local.set $0
     br $repeat|1
    end
   end
@@ -3301,9 +3303,11 @@
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
+  (local $6 i32)
   block $break|0
    local.get $0
    i32.load offset=8
+   local.tee $6
    i32.load offset=4
    local.set $5
    loop $repeat|0
@@ -3331,8 +3335,7 @@
      i32.load
      local.get $3
      call $assembly/ansi/moveCursorToPosition
-     local.get $0
-     i32.load offset=8
+     local.get $6
      local.get $2
      call $~lib/array/Array<u8>#__get
      i32.const 255

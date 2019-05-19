@@ -45,24 +45,28 @@ export function createDroplet(column: i32, lines: i32): Droplet {
 // "Moves" a droplet down the screen
 export function updateDroplet(droplet: Droplet, lines: i32): void {
   var speed = droplet.speed;
+  var height = droplet.height;
+  var row = droplet.row;
+  var chars = droplet.characterCodeArray;
   // Increase the droplet row
-  droplet.row += speed;
+  row += speed;
 
   // Wrap the rows so it comes back from up top
-  if (droplet.row >= droplet.height + lines) {
-    droplet.row = -droplet.height;
+  if (row >= height + lines) {
+    row = -height;
   }
+  droplet.row = row;
 
   // Rotate down the old characters
   // How many characters to rotate
   for (let i = 0; i < speed; i++) {
-    rotateArrayLeft(droplet.characterCodeArray);
+    rotateArrayLeft(chars);
   }
 
   // Add some new characters
   // To replace the old rotated ones
   for (let i = 0; i < speed; i++) {
-    droplet.characterCodeArray[i] = getRandomCharacterCode(
+    chars[i] = getRandomCharacterCode(
       ENGLISH_CHARACTER_CODE_START,
       ENGLISH_CHARACTER_CODE_END
     );
@@ -71,8 +75,9 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
 
 // Places a droplet (and its characters) onto the screen
 export function drawDroplet(droplet: Droplet, lines: i32): void {
+  let chars = droplet.characterCodeArray;
   // Loop over our characters
-  for (let i = 0, len = droplet.characterCodeArray.length; i < len; i++) {
+  for (let i = 0, len = chars.length; i < len; i++) {
     let cursorRow = droplet.row + i;
 
     if (cursorRow >= 0 && cursorRow <= lines) {
@@ -85,7 +90,7 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       // Draw the character
       // TODO: Optimize this, and try to remove generating / manipulating.
       // Perhpas write the character Codes Array directly?
-      printColor(String.fromCharCode(droplet.characterCodeArray[i]), color);
+      printColor(String.fromCharCode(chars[i]), color);
     }
   }
 }

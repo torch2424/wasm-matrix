@@ -10,6 +10,5 @@ export const ENGLISH_CHARACTER_CODE_START = 33;
 export const ENGLISH_CHARACTER_CODE_END = 126;
 
 export function getRandomCharacterCode(start: i32, end: i32): u8 {
-  let length = abs(end - start);
-  return ((randomByte() % length) + start) as u8;
+  return ((randomByte() % (end - start)) + start) as u8;
 }
