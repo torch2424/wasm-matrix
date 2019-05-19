@@ -34,44 +34,42 @@
  (data (i32.const 360) "\04\00\00\00n\00u\00l\00l")
  (data (i32.const 376) "\0b\00\00\00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x")
  (data (i32.const 408) "\06\00\00\00U\00S\00A\00G\00E\00:")
- (data (i32.const 424) "\0b\00\00\00[\00w\00a\00p\00m\00 \00r\00u\00n\00]\00 ")
- (data (i32.const 456) "\04\00\00\00 \00-\00l\00 ")
- (data (i32.const 472) "\06\00\00\00$\00L\00I\00N\00E\00S")
- (data (i32.const 488) "\03\00\00\00 \00-\00c")
- (data (i32.const 504) "\08\00\00\00$\00C\00O\00L\00U\00M\00N\00S")
- (data (i32.const 528) "\06\00\00\00F\00L\00A\00G\00S\00:")
- (data (i32.const 544) "\0c\00\00\00-\00l\00,\00 \00-\00-\00l\00i\00n\00e\00s\00 ")
- (data (i32.const 576) "\n\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 ")
- (data (i32.const 600) "\0c\00\00\00l\00i\00n\00e\00s\00 \00(\00r\00o\00w\00s\00)")
- (data (i32.const 632) "\0b\00\00\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 ")
- (data (i32.const 664) "\n\00\00\00t\00h\00e\00 \00m\00a\00t\00r\00i\00x")
+ (data (i32.const 424) "\1a\00\00\00[\00w\00a\00p\00m\00 \00r\00u\00n\00]\00 \00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00 \00-\00l\00 ")
+ (data (i32.const 480) "\06\00\00\00$\00L\00I\00N\00E\00S")
+ (data (i32.const 496) "\03\00\00\00 \00-\00c")
+ (data (i32.const 512) "\08\00\00\00$\00C\00O\00L\00U\00M\00N\00S")
+ (data (i32.const 536) "\06\00\00\00F\00L\00A\00G\00S\00:")
+ (data (i32.const 552) "\0c\00\00\00-\00l\00,\00 \00-\00-\00l\00i\00n\00e\00s\00 ")
+ (data (i32.const 584) "\n\00\00\00N\00u\00m\00b\00e\00r\00 \00o\00f\00 ")
+ (data (i32.const 608) "\0c\00\00\00l\00i\00n\00e\00s\00 \00(\00r\00o\00w\00s\00)")
+ (data (i32.const 640) "\15\00\00\00 \00t\00o\00 \00r\00e\00n\00d\00e\00r\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x")
  (data (i32.const 688) "\0b\00\00\00S\00u\00g\00g\00e\00s\00t\00e\00d\00:\00 ")
- (data (i32.const 720) "\10\00\00\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]")
- (data (i32.const 760) "\02\00\00\00,\00 ")
- (data (i32.const 768) "\t\00\00\00D\00e\00f\00a\00u\00l\00t\00:\00 ")
- (data (i32.const 792) "\02\00\00\002\004")
- (data (i32.const 800) "\0e\00\00\00-\00c\00,\00 \00-\00-\00c\00o\00l\00u\00m\00n\00s\00 ")
- (data (i32.const 832) "\07\00\00\00c\00o\00l\00u\00m\00n\00s")
- (data (i32.const 856) "\02\00\00\008\000")
- (data (i32.const 864) "\0b\00\00\00-\00s\00,\00 \00-\00-\00s\00p\00e\00e\00d")
- (data (i32.const 896) "\t\00\00\00S\00p\00e\00e\00d\00 \00o\00f\00 ")
- (data (i32.const 920) "\01\00\00\001")
- (data (i32.const 928) "\02\00\00\00-\00l")
- (data (i32.const 936) "\07\00\00\00-\00-\00l\00i\00n\00e\00s")
- (data (i32.const 960) "&\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00l\00i\00n\00e\00s\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o")
- (data (i32.const 1040) "\02\00\00\00-\00c")
- (data (i32.const 1048) "\t\00\00\00-\00-\00c\00o\00l\00u\00m\00n\00s")
- (data (i32.const 1072) "\'\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00c\00o\00l\00u\00m\00n\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o")
- (data (i32.const 1160) "\02\00\00\00-\00s")
- (data (i32.const 1168) "\07\00\00\00-\00-\00s\00p\00e\00e\00d")
- (data (i32.const 1192) "\"\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00s\00p\00e\00e\00d\00 \00>\00=\001\00 \00a\00n\00d\00 \00<\00=\00 \002\000")
- (data (i32.const 1264) "\02\00\00\00-\00h")
- (data (i32.const 1272) "\06\00\00\00-\00-\00h\00e\00l\00p")
- (data (i32.const 1288) "\01\00\00\000")
- (data (i32.const 1296) "(\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00d\00\00\00\e8\03\00\00\10\'\00\00\a0\86\01\00@B\0f\00\80\96\98\00\00\e1\f5\05\00\ca\9a;")
- (data (i32.const 1360) "\10\05\00\00\n")
- (data (i32.const 1368) "\01\00\00\00;")
- (data (i32.const 1376) "\01\00\00\00H")
+ (data (i32.const 720) "\1b\00\00\00 \00[\00B\00a\00s\00h\00 \00V\00a\00r\00i\00a\00b\00l\00e\00]\00,\00 \00D\00e\00f\00a\00u\00l\00t\00:\00 ")
+ (data (i32.const 784) "\02\00\00\002\004")
+ (data (i32.const 792) "\0e\00\00\00-\00c\00,\00 \00-\00-\00c\00o\00l\00u\00m\00n\00s\00 ")
+ (data (i32.const 824) "\07\00\00\00c\00o\00l\00u\00m\00n\00s")
+ (data (i32.const 848) "\02\00\00\008\000")
+ (data (i32.const 856) "\0b\00\00\00-\00s\00,\00 \00-\00-\00s\00p\00e\00e\00d")
+ (data (i32.const 888) "\13\00\00\00S\00p\00e\00e\00d\00 \00o\00f\00 \00t\00h\00e\00 \00m\00a\00t\00r\00i\00x")
+ (data (i32.const 936) "\04\00\00\001\00 \00,\00 ")
+ (data (i32.const 952) "\t\00\00\00D\00e\00f\00a\00u\00l\00t\00:\00 ")
+ (data (i32.const 976) "\01\00\00\001")
+ (data (i32.const 984) "\02\00\00\00-\00l")
+ (data (i32.const 992) "\07\00\00\00-\00-\00l\00i\00n\00e\00s")
+ (data (i32.const 1016) "&\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00l\00i\00n\00e\00s\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o")
+ (data (i32.const 1096) "\02\00\00\00-\00c")
+ (data (i32.const 1104) "\t\00\00\00-\00-\00c\00o\00l\00u\00m\00n\00s")
+ (data (i32.const 1128) "\'\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00c\00o\00l\00u\00m\00n\00 \00g\00r\00e\00a\00t\00e\00r\00 \00t\00h\00a\00n\00 \00z\00e\00r\00o")
+ (data (i32.const 1216) "\02\00\00\00-\00s")
+ (data (i32.const 1224) "\07\00\00\00-\00-\00s\00p\00e\00e\00d")
+ (data (i32.const 1248) "\"\00\00\00P\00l\00e\00a\00s\00e\00 \00e\00n\00t\00e\00r\00 \00a\00 \00s\00p\00e\00e\00d\00 \00>\00=\001\00 \00a\00n\00d\00 \00<\00=\00 \002\000")
+ (data (i32.const 1320) "\02\00\00\00-\00h")
+ (data (i32.const 1328) "\06\00\00\00-\00-\00h\00e\00l\00p")
+ (data (i32.const 1344) "\01\00\00\000")
+ (data (i32.const 1352) "(\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00d\00\00\00\e8\03\00\00\10\'\00\00\a0\86\01\00@B\0f\00\80\96\98\00\00\e1\f5\05\00\ca\9a;")
+ (data (i32.const 1416) "H\05\00\00\n")
+ (data (i32.const 1424) "\01\00\00\00;")
+ (data (i32.const 1432) "\01\00\00\00H")
  (table $0 1 funcref)
  (elem (i32.const 0) $null)
  (global $~lib/allocator/arena/startOffset (mut i32) (i32.const 0))
@@ -2427,90 +2425,70 @@
   i32.const 144
   call $assembly/wasa/Console.log
   i32.const 424
-  i32.const 376
+  i32.const 480
   call $~lib/string/String.__concat
-  i32.const 456
+  i32.const 496
   call $~lib/string/String.__concat
-  i32.const 472
-  call $~lib/string/String.__concat
-  i32.const 488
-  call $~lib/string/String.__concat
-  i32.const 504
+  i32.const 512
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
   i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 528
+  i32.const 536
   i32.const 80
   call $assembly/ansi/printColor
   i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 544
+  i32.const 552
   local.get $0
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
-  i32.const 576
-  i32.const 600
+  i32.const 584
+  i32.const 608
   call $~lib/string/String.__concat
-  i32.const 632
-  call $~lib/string/String.__concat
-  i32.const 664
+  i32.const 640
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
   i32.const 688
-  i32.const 472
+  i32.const 480
   call $~lib/string/String.__concat
   i32.const 720
   call $~lib/string/String.__concat
-  i32.const 760
+  i32.const 784
   call $~lib/string/String.__concat
-  i32.const 768
-  call $~lib/string/String.__concat
+  call $assembly/wasa/Console.log
+  i32.const 144
+  call $assembly/wasa/Console.log
   i32.const 792
-  call $~lib/string/String.__concat
-  call $assembly/wasa/Console.log
-  i32.const 144
-  call $assembly/wasa/Console.log
-  i32.const 800
   local.get $0
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
-  i32.const 576
-  i32.const 832
+  i32.const 584
+  i32.const 824
   call $~lib/string/String.__concat
-  i32.const 632
-  call $~lib/string/String.__concat
-  i32.const 664
+  i32.const 640
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
   i32.const 688
-  i32.const 504
+  i32.const 512
   call $~lib/string/String.__concat
   i32.const 720
   call $~lib/string/String.__concat
-  i32.const 760
-  call $~lib/string/String.__concat
-  i32.const 768
-  call $~lib/string/String.__concat
-  i32.const 856
+  i32.const 848
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
   i32.const 144
   call $assembly/wasa/Console.log
-  i32.const 864
+  i32.const 856
   call $assembly/wasa/Console.log
-  i32.const 896
-  i32.const 664
-  call $~lib/string/String.__concat
+  i32.const 888
   call $assembly/wasa/Console.log
   i32.const 688
-  i32.const 920
+  i32.const 936
   call $~lib/string/String.__concat
-  i32.const 760
+  i32.const 952
   call $~lib/string/String.__concat
-  i32.const 768
-  call $~lib/string/String.__concat
-  i32.const 920
+  i32.const 976
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
   i32.const 144
@@ -3213,7 +3191,7 @@
  (func $~lib/internal/number/decimalCount32 (; 44 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  i32.const 1360
+  i32.const 1416
   i32.load
   i32.const 32
   local.get $0
@@ -3270,7 +3248,7 @@
   local.get $0
   i32.eqz
   if
-   i32.const 1288
+   i32.const 1344
    return
   end
   local.get $0
@@ -3306,12 +3284,12 @@
   local.get $1
   call $~lib/internal/number/itoa32
   call $~lib/string/String.__concat
-  i32.const 1368
+  i32.const 1424
   call $~lib/string/String.__concat
   local.get $0
   call $~lib/internal/number/itoa32
   call $~lib/string/String.__concat
-  i32.const 1376
+  i32.const 1432
   call $~lib/string/String.__concat
   i32.const 0
   call $assembly/wasa/Console.write
@@ -3436,14 +3414,14 @@
     local.get $0
     call $~lib/array/Array<~lib/string/String>#__get
     local.tee $2
-    i32.const 928
+    i32.const 984
     call $~lib/string/String.__eq
     local.tee $1
     if (result i32)
      local.get $1
     else     
      local.get $2
-     i32.const 936
+     i32.const 992
      call $~lib/string/String.__eq
     end
     if
@@ -3459,21 +3437,21 @@
      i32.const 1
      i32.lt_s
      if
-      i32.const 960
+      i32.const 1016
       i32.const 64
       call $assembly/ansi/printColor
       return
      end
     else     
      local.get $2
-     i32.const 1040
+     i32.const 1096
      call $~lib/string/String.__eq
      local.tee $1
      if (result i32)
       local.get $1
      else      
       local.get $2
-      i32.const 1048
+      i32.const 1104
       call $~lib/string/String.__eq
      end
      if
@@ -3489,21 +3467,21 @@
       i32.const 1
       i32.lt_s
       if
-       i32.const 1072
+       i32.const 1128
        i32.const 64
        call $assembly/ansi/printColor
        return
       end
      else      
       local.get $2
-      i32.const 1160
+      i32.const 1216
       call $~lib/string/String.__eq
       local.tee $1
       if (result i32)
        local.get $1
       else       
        local.get $2
-       i32.const 1168
+       i32.const 1224
        call $~lib/string/String.__eq
       end
       if
@@ -3527,21 +3505,21 @@
         i32.gt_s
        end
        if
-        i32.const 1192
+        i32.const 1248
         i32.const 64
         call $assembly/ansi/printColor
         return
        end
       else       
        local.get $2
-       i32.const 1264
+       i32.const 1320
        call $~lib/string/String.__eq
        local.tee $1
        if (result i32)
         local.get $1
        else        
         local.get $2
-        i32.const 1272
+        i32.const 1328
         call $~lib/string/String.__eq
        end
        if
@@ -3643,7 +3621,7 @@
   unreachable
  )
  (func $start (; 51 ;) (type $FUNCSIG$v)
-  i32.const 1384
+  i32.const 1440
   global.set $~lib/allocator/arena/startOffset
   global.get $~lib/allocator/arena/startOffset
   global.set $~lib/allocator/arena/offset
