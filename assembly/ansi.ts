@@ -20,6 +20,7 @@ export function printColor(value: string, color: string): void {
   Console.write(color + value + RESET, false);
 }
 
+@inline
 export function flushConsole(): void {
   Console.write(FLUSH, false);
 }

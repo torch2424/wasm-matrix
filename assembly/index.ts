@@ -37,13 +37,12 @@ export function _start(): void {
 
   for (let i = 0, len = args.length; i < len; i++) {
     let arg = args[i];
-
     if (arg == "-l" || arg == "--lines") {
       lines = parseInt(args[i + 1]) as i32;
       i++;
 
       if (lines < 1) {
-        printColor("Please enter a lines greater than zero", RED);
+        printColor("Please enter a " + "lines" + " greater than zero", RED);
         return;
       }
     } else if (arg == "-c" || arg == "--columns") {
@@ -51,7 +50,7 @@ export function _start(): void {
       i++;
 
       if (columns < 1) {
-        printColor("Please enter a column greater than zero", RED);
+        printColor("Please enter a " + "column" + " greater than zero", RED);
         return;
       }
     } else if (arg == "-s" || arg == "--speed") {
@@ -59,7 +58,7 @@ export function _start(): void {
       i++;
 
       if (speed < 1 || speed > 20) {
-        printColor("Please enter a speed >=1 and <= 20", RED);
+        printColor("Please enter a " + "speed >=1 and <= 20", RED);
         return;
       }
     } else if (arg == "-h" || arg == "--help") {

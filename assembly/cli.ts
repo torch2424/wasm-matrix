@@ -45,6 +45,6 @@ export function showHelp(): void {
 
   Console.log("-s, --speed");
   Console.log("Speed of the matrix");
-  Console.log("Suggested: " + "1 , " + "Default: " + DEFAULT_SPEED.toString());
+  Console.log("Suggested: " + "1, Default: " + DEFAULT_SPEED.toString());
   Console.log("");
 }
