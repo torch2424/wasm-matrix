@@ -14,7 +14,7 @@ export const CYAN = "\u001b[36m";
 export const RESET = "\u001b[0m";
 
 // Ansi Cursor Codes
-export const HIDE_CURSOR = "\u001b[?25h";
+export const HIDE_CURSOR = "\u001b[?25l";
 
 export function printColor(value: string, color: string): void {
   Console.write(color + value + RESET, false);

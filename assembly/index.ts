@@ -36,10 +36,10 @@ export function _start(): void {
   }
 
   for (let i = 0, len = args.length; i < len; i++) {
-    let arg = args[i];
+    let arg = unchecked(args[i]);
     if (arg == "-l" || arg == "--lines") {
       lines = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (lines < 1) {
         printColor("Please enter a " + "lines" + " greater than zero", RED);
@@ -47,7 +47,7 @@ export function _start(): void {
       }
     } else if (arg == "-c" || arg == "--columns") {
       columns = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (columns < 1) {
         printColor("Please enter a " + "column" + " greater than zero", RED);
@@ -55,7 +55,7 @@ export function _start(): void {
       }
     } else if (arg == "-s" || arg == "--speed") {
       speed = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (speed < 1 || speed > 20) {
         printColor("Please enter a " + "speed >=1 and <= 20", RED);
@@ -70,13 +70,13 @@ export function _start(): void {
   // Create all of our droplets
   let droplets = new Array<Droplet>(columns);
   for (let i = 0; i < columns; i++) {
-    droplets[i] = createDroplet(i, lines);
+    unchecked((droplets[i] = createDroplet(i, lines)));
   }
 
   while (true) {
     // Update our droplets
     for (let i = 0; i < columns; i++) {
-      updateDroplet(droplets[i], lines);
+      updateDroplet(unchecked(droplets[i]), lines);
     }
 
     // Clear the screen
@@ -84,7 +84,7 @@ export function _start(): void {
 
     // Draw the droplets
     for (let i = 0; i < columns; i++) {
-      drawDroplet(droplets[i], lines);
+      drawDroplet(unchecked(droplets[i]), lines);
     }
 
     sleep(20 - speed);

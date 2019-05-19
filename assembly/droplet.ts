@@ -34,9 +34,11 @@ export function createDroplet(column: i32, lines: i32): Droplet {
   // Create our initial string
   let chars = new Array<u8>(height);
   for (let i = 0; i < height; i++) {
-    chars[i] = getRandomCharacterCode(
-      ENGLISH_CHARACTER_CODE_START,
-      ENGLISH_CHARACTER_CODE_END
+    unchecked(
+      (chars[i] = getRandomCharacterCode(
+        ENGLISH_CHARACTER_CODE_START,
+        ENGLISH_CHARACTER_CODE_END
+      ))
     );
   }
   droplet.characterCodeArray = chars;
@@ -67,9 +69,11 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
   // Add some new characters
   // To replace the old rotated ones
   for (let i = 0; i < speed; i++) {
-    chars[i] = getRandomCharacterCode(
-      ENGLISH_CHARACTER_CODE_START,
-      ENGLISH_CHARACTER_CODE_END
+    unchecked(
+      (chars[i] = getRandomCharacterCode(
+        ENGLISH_CHARACTER_CODE_START,
+        ENGLISH_CHARACTER_CODE_END
+      ))
     );
   }
 }
@@ -91,7 +95,7 @@ export function drawDroplet(droplet: Droplet, lines: i32): void {
       // Draw the character
       // TODO: Optimize this, and try to remove generating / manipulating.
       // Perhpas write the character Codes Array directly?
-      printColor(String.fromCharCode(chars[i]), color);
+      printColor(String.fromCharCode(unchecked(chars[i])), color);
     }
   }
 }

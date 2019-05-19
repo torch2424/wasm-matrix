@@ -24,7 +24,7 @@
  (data (i32.const 64) "\05\00\00\00\1b\00[\003\001\00m")
  (data (i32.const 80) "\05\00\00\00\1b\00[\003\006\00m")
  (data (i32.const 96) "\04\00\00\00\1b\00[\000\00m")
- (data (i32.const 112) "\06\00\00\00\1b\00[\00?\002\005\00h")
+ (data (i32.const 112) "\06\00\00\00\1b\00[\00?\002\005\00l")
  (data (i32.const 136) "\80")
  (data (i32.const 152) "\0e\00\00\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s")
  (data (i32.const 184) "\17\00\00\00~\00l\00i\00b\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s")
@@ -2584,25 +2584,14 @@
   i32.const 144
   call $assembly/wasa/Console.log
  )
- (func $~lib/array/Array<~lib/string/String>#__get (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $1
+ (func $~lib/array/Array<~lib/string/String>#__unchecked_get (; 32 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   i32.load
-  local.tee $0
-  i32.load
+  local.get $1
   i32.const 2
-  i32.shr_u
-  i32.lt_u
-  if (result i32)
-   local.get $0
-   local.get $1
-   i32.const 2
-   i32.shl
-   i32.add
-   i32.load offset=8
-  else   
-   unreachable
-  end
+  i32.shl
+  i32.add
+  i32.load offset=8
  )
  (func $~lib/internal/string/compareUnsafe (; 33 ;) (type $FUNCSIG$iiii) (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
@@ -2676,7 +2665,27 @@
   call $~lib/internal/string/compareUnsafe
   i32.eqz
  )
- (func $~lib/internal/string/parse<f64> (; 35 ;) (type $FUNCSIG$di) (param $0 i32) (result f64)
+ (func $~lib/array/Array<~lib/string/String>#__get (; 35 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  local.get $1
+  local.get $0
+  i32.load
+  local.tee $0
+  i32.load
+  i32.const 2
+  i32.shr_u
+  i32.lt_u
+  if (result i32)
+   local.get $0
+   local.get $1
+   i32.const 2
+   i32.shl
+   i32.add
+   i32.load offset=8
+  else   
+   unreachable
+  end
+ )
+ (func $~lib/internal/string/parse<f64> (; 36 ;) (type $FUNCSIG$di) (param $0 i32) (result f64)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -2908,7 +2917,7 @@
   local.get $5
   f64.mul
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#constructor (; 36 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#constructor (; 37 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -2947,7 +2956,7 @@
   call $~lib/internal/memory/memset
   local.get $1
  )
- (func $assembly/droplet/Droplet#constructor (; 37 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/droplet/Droplet#constructor (; 38 ;) (type $FUNCSIG$i) (result i32)
   (local $0 i32)
   i32.const 20
   call $~lib/allocator/arena/__memory_allocate
@@ -2968,7 +2977,7 @@
   i32.store offset=16
   local.get $0
  )
- (func $assembly/utils/randomByte (; 38 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/utils/randomByte (; 39 ;) (type $FUNCSIG$i) (result i32)
   global.get $assembly/utils/randomBytePointer
   i32.const 1
   call $~lib/bindings/wasi_unstable/random_get
@@ -2981,7 +2990,7 @@
   global.get $assembly/utils/randomBytePointer
   i32.load8_u
  )
- (func $~lib/array/Array<u8>#constructor (; 39 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/array/Array<u8>#constructor (; 40 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   local.get $0
@@ -3016,53 +3025,29 @@
   call $~lib/internal/memory/memset
   local.get $1
  )
- (func $assembly/characters/getRandomCharacterCode (; 40 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/characters/getRandomCharacterCode (; 41 ;) (type $FUNCSIG$i) (result i32)
   call $assembly/utils/randomByte
   i32.const 93
   i32.rem_s
   i32.const 33
   i32.add
  )
- (func $~lib/array/Array<u8>#__set (; 41 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
+ (func $~lib/array/Array<u8>#__unchecked_set (; 42 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $0
   i32.load
-  local.tee $3
-  i32.load
-  i32.ge_u
-  if
-   local.get $1
-   i32.const 1073741816
-   i32.ge_u
-   if
-    block
-     i32.const 0
-     call $assembly/env/wasiabort
-    end
-    unreachable
-   end
-   local.get $0
-   local.get $3
-   local.get $1
-   i32.const 1
-   i32.add
-   local.tee $4
-   call $~lib/internal/arraybuffer/reallocateUnsafe
-   local.tee $3
-   i32.store
-   local.get $0
-   local.get $4
-   i32.store offset=4
-  end
   local.get $1
-  local.get $3
   i32.add
   local.get $2
   i32.store8 offset=8
  )
- (func $assembly/droplet/createDroplet (; 42 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<u8>#__unchecked_get (; 43 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  i32.load
+  local.get $1
+  i32.add
+  i32.load8_u offset=8
+ )
+ (func $assembly/droplet/createDroplet (; 44 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   call $assembly/droplet/Droplet#constructor
@@ -3107,7 +3092,11 @@
     local.get $1
     local.get $0
     call $assembly/characters/getRandomCharacterCode
-    call $~lib/array/Array<u8>#__set
+    call $~lib/array/Array<u8>#__unchecked_set
+    local.get $1
+    local.get $0
+    call $~lib/array/Array<u8>#__unchecked_get
+    drop
     local.get $0
     i32.const 1
     i32.add
@@ -3120,74 +3109,14 @@
   i32.store offset=8
   local.get $2
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#__set (; 43 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $1
-  local.get $0
-  i32.load
-  local.tee $3
-  i32.load
-  i32.const 2
-  i32.shr_u
-  i32.ge_u
-  if
-   local.get $1
-   i32.const 268435454
-   i32.ge_u
-   if
-    block
-     i32.const 0
-     call $assembly/env/wasiabort
-    end
-    unreachable
-   end
-   local.get $0
-   local.get $3
-   local.get $1
-   i32.const 1
-   i32.add
-   local.tee $4
-   i32.const 2
-   i32.shl
-   call $~lib/internal/arraybuffer/reallocateUnsafe
-   local.tee $3
-   i32.store
-   local.get $0
-   local.get $4
-   i32.store offset=4
-  end
-  local.get $3
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  local.get $2
-  i32.store offset=8
- )
- (func $~lib/array/Array<u8>#__get (; 44 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  local.get $1
-  local.get $0
-  i32.load
-  local.tee $0
-  i32.load
-  i32.lt_u
-  if (result i32)
-   local.get $0
-   local.get $1
-   i32.add
-   i32.load8_u offset=8
-  else   
-   unreachable
-  end
- )
  (func $assembly/utils/rotateArrayLeft (; 45 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
+  (local $4 i32)
   local.get $0
   i32.const 0
-  call $~lib/array/Array<u8>#__get
+  call $~lib/array/Array<u8>#__unchecked_get
   local.set $3
   local.get $0
   i32.load offset=4
@@ -3206,16 +3135,26 @@
     local.get $1
     i32.const 1
     i32.add
-    local.tee $1
-    call $~lib/array/Array<u8>#__get
-    call $~lib/array/Array<u8>#__set
+    local.tee $4
+    call $~lib/array/Array<u8>#__unchecked_get
+    call $~lib/array/Array<u8>#__unchecked_set
+    local.get $0
+    local.get $1
+    call $~lib/array/Array<u8>#__unchecked_get
+    drop
+    local.get $4
+    local.set $1
     br $repeat|0
    end
   end
   local.get $0
   local.get $2
   local.get $3
-  call $~lib/array/Array<u8>#__set
+  call $~lib/array/Array<u8>#__unchecked_set
+  local.get $0
+  local.get $2
+  call $~lib/array/Array<u8>#__unchecked_get
+  drop
  )
  (func $assembly/droplet/updateDroplet (; 46 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -3274,7 +3213,11 @@
     local.get $2
     local.get $0
     call $assembly/characters/getRandomCharacterCode
-    call $~lib/array/Array<u8>#__set
+    call $~lib/array/Array<u8>#__unchecked_set
+    local.get $2
+    local.get $0
+    call $~lib/array/Array<u8>#__unchecked_get
+    drop
     local.get $0
     i32.const 1
     i32.add
@@ -3342,7 +3285,7 @@
      call $assembly/ansi/moveCursorToPosition
      local.get $6
      local.get $2
-     call $~lib/array/Array<u8>#__get
+     call $~lib/array/Array<u8>#__unchecked_get
      i32.const 255
      i32.and
      local.set $3
@@ -3417,7 +3360,7 @@
    if
     local.get $4
     local.get $0
-    call $~lib/array/Array<~lib/string/String>#__get
+    call $~lib/array/Array<~lib/string/String>#__unchecked_get
     local.tee $2
     i32.const 1032
     call $~lib/string/String.__eq
@@ -3561,12 +3504,22 @@
    local.get $3
    i32.lt_s
    if
-    local.get $1
-    local.get $0
     local.get $0
     local.get $5
     call $assembly/droplet/createDroplet
-    call $~lib/array/Array<assembly/droplet/Droplet>#__set
+    local.set $2
+    local.get $1
+    i32.load
+    local.get $0
+    i32.const 2
+    i32.shl
+    i32.add
+    local.get $2
+    i32.store offset=8
+    local.get $1
+    local.get $0
+    call $~lib/array/Array<~lib/string/String>#__unchecked_get
+    drop
     local.get $0
     i32.const 1
     i32.add
@@ -3584,7 +3537,7 @@
     if
      local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/string/String>#__get
+     call $~lib/array/Array<~lib/string/String>#__unchecked_get
      local.get $5
      call $assembly/droplet/updateDroplet
      local.get $0
@@ -3606,7 +3559,7 @@
     if
      local.get $1
      local.get $0
-     call $~lib/array/Array<~lib/string/String>#__get
+     call $~lib/array/Array<~lib/string/String>#__unchecked_get
      local.get $5
      call $assembly/droplet/drawDroplet
      local.get $0
