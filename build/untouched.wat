@@ -82,6 +82,9 @@
  (global $assembly/ansi/CYAN i32 (i32.const 80))
  (global $assembly/ansi/RESET i32 (i32.const 96))
  (global $assembly/ansi/HIDE_CURSOR i32 (i32.const 112))
+ (global $assembly/cli/DEFAULT_LINES i32 (i32.const 24))
+ (global $assembly/cli/DEFAULT_COLUMNS i32 (i32.const 80))
+ (global $assembly/cli/DEFAULT_SPEED i32 (i32.const 1))
  (global $assembly/utils/randomBytePointer (mut i32) (i32.const 0))
  (global $assembly/utils/timeCounterPointer (mut i32) (i32.const 0))
  (global $assembly/characters/ENGLISH_CHARACTER_CODE_START i32 (i32.const 33))
@@ -3681,7 +3684,7 @@
   call $~lib/string/String.__concat
   i32.const 720
   call $~lib/string/String.__concat
-  i32.const 24
+  global.get $assembly/cli/DEFAULT_LINES
   call $~lib/number/I32#toString
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
@@ -3702,7 +3705,7 @@
   call $~lib/string/String.__concat
   i32.const 720
   call $~lib/string/String.__concat
-  i32.const 80
+  global.get $assembly/cli/DEFAULT_COLUMNS
   call $~lib/number/I32#toString
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log
@@ -3717,7 +3720,7 @@
   call $~lib/string/String.__concat
   i32.const 1464
   call $~lib/string/String.__concat
-  i32.const 1
+  global.get $assembly/cli/DEFAULT_SPEED
   call $~lib/number/I32#toString
   call $~lib/string/String.__concat
   call $assembly/wasa/Console.log

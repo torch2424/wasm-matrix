@@ -3,6 +3,10 @@
 import { Console } from "./wasa";
 import { GREEN, CYAN, RED, RESET, printColor } from "./ansi";
 
+const DEFAULT_LINES = 24;
+const DEFAULT_COLUMNS = 80;
+const DEFAULT_SPEED = 1;
+
 export function showHelp(): void {
   let REQUIRED = RED + "(REQUIRED)" + RESET;
 
@@ -22,19 +26,25 @@ export function showHelp(): void {
   Console.log("-l, --lines " + REQUIRED);
   Console.log("Number of " + "lines (rows)" + " to render the matrix");
   Console.log(
-    "Suggested: " + "$LINES" + " [Bash Variable], Default: " + (24).toString()
+    "Suggested: " +
+      "$LINES" +
+      " [Bash Variable], Default: " +
+      DEFAULT_LINES.toString()
   );
   Console.log("");
 
   Console.log("-c, --columns " + REQUIRED);
   Console.log("Number of " + "columns" + " to render the matrix");
   Console.log(
-    "Suggested: " + "$COLUMNS" + " [Bash Variable], Default: " + (80).toString()
+    "Suggested: " +
+      "$COLUMNS" +
+      " [Bash Variable], Default: " +
+      DEFAULT_COLUMNS.toString()
   );
   Console.log("");
 
   Console.log("-s, --speed");
   Console.log("Speed of the matrix");
-  Console.log("Suggested: " + "1 , " + "Default: " + (1).toString());
+  Console.log("Suggested: " + "1 , " + "Default: " + DEFAULT_SPEED.toString());
   Console.log("");
 }
