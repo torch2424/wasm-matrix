@@ -1,6 +1,6 @@
 // Matrix Droplets
 
-import { randomByte, rotateArrayRight } from "./utils";
+import { randomByte, rotateArrayLeft } from "./utils";
 import {
   ENGLISH_CHARACTER_CODE_START,
   ENGLISH_CHARACTER_CODE_END,
@@ -56,7 +56,7 @@ export function updateDroplet(droplet: Droplet, lines: i32): void {
   // Rotate down the old characters
   // How many characters to rotate
   for (let i = 0; i < speed; i++) {
-    rotateArrayRight(droplet.characterCodeArray);
+    rotateArrayLeft(droplet.characterCodeArray);
   }
 
   // Add some new characters

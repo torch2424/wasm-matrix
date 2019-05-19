@@ -3048,46 +3048,41 @@
    unreachable
   end
  )
- (func $assembly/utils/rotateArrayRight (; 42 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/utils/rotateArrayLeft (; 42 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  block $break|0
-   local.get $0
-   i32.load offset=4
-   i32.const 1
-   i32.sub
-   local.set $3
-   loop $repeat|0
+  local.get $0
+  i32.const 0
+  call $~lib/array/Array<u8>#__get
+  local.set $3
+  local.get $0
+  i32.load offset=4
+  i32.const 1
+  i32.sub
+  local.set $2
+  loop $repeat|0
+   block $break|0
     local.get $1
-    local.get $3
-    i32.ge_s
+    local.get $2
+    i32.gt_s
     br_if $break|0
+    local.get $0
+    local.get $1
     local.get $0
     local.get $1
     i32.const 1
     i32.add
-    local.tee $2
-    call $~lib/array/Array<u8>#__get
-    local.set $4
-    local.get $0
-    local.get $2
-    local.get $0
-    local.get $1
+    local.tee $1
     call $~lib/array/Array<u8>#__get
     call $~lib/array/Array<u8>#__set
-    local.get $0
-    local.get $1
-    local.get $4
-    call $~lib/array/Array<u8>#__set
-    local.get $2
-    local.set $1
     br $repeat|0
-    unreachable
    end
-   unreachable
   end
+  local.get $0
+  local.get $2
+  local.get $3
+  call $~lib/array/Array<u8>#__set
  )
  (func $assembly/droplet/updateDroplet (; 43 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -3124,7 +3119,7 @@
     br_if $break|0
     local.get $0
     i32.load offset=8
-    call $assembly/utils/rotateArrayRight
+    call $assembly/utils/rotateArrayLeft
     local.get $1
     i32.const 1
     i32.add
@@ -3342,30 +3337,7 @@
   i64.div_u
   i32.wrap_i64
  )
- (func $assembly/utils/sleep (; 50 ;) (type $FUNCSIG$vi) (param $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  call $assembly/utils/now
-  local.set $1
-  loop $continue|0
-   local.get $1
-   call $assembly/utils/now
-   i32.sub
-   local.tee $2
-   i32.const 31
-   i32.shr_s
-   local.tee $3
-   local.get $2
-   local.get $3
-   i32.add
-   i32.xor
-   local.get $0
-   i32.le_s
-   br_if $continue|0
-  end
- )
- (func $assembly/index/_start (; 51 ;) (type $FUNCSIG$v)
+ (func $assembly/index/_start (; 50 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -3592,13 +3564,23 @@
    i32.const 20
    local.get $6
    i32.sub
-   call $assembly/utils/sleep
+   local.set $0
+   call $assembly/utils/now
+   local.set $2
+   loop $continue|0
+    call $assembly/utils/now
+    local.get $2
+    i32.sub
+    local.get $0
+    i32.le_s
+    br_if $continue|0
+   end
    br $continue|2
    unreachable
   end
   unreachable
  )
- (func $start (; 52 ;) (type $FUNCSIG$v)
+ (func $start (; 51 ;) (type $FUNCSIG$v)
   i32.const 1568
   global.set $~lib/allocator/arena/startOffset
   global.get $~lib/allocator/arena/startOffset
@@ -3610,10 +3592,10 @@
   call $~lib/allocator/arena/__memory_allocate
   global.set $assembly/utils/timeCounterPointer
  )
- (func $null (; 53 ;) (type $FUNCSIG$v)
+ (func $null (; 52 ;) (type $FUNCSIG$v)
   nop
  )
- (func $assembly/env/wasiabort|trampoline (; 54 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+ (func $assembly/env/wasiabort|trampoline (; 53 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
   block $4of4
    block $3of4
     block $2of4
@@ -3642,7 +3624,7 @@
    call $assembly/env/wasiabort
   end
  )
- (func $~lib/setargc (; 55 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/setargc (; 54 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   global.set $~lib/argc
  )

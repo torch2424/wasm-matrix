@@ -11,18 +11,17 @@ export function randomByte(): i32 {
   return load<u8>(randomBytePointer) as i32;
 }
 
-export function rotateArrayRight(data: u8[]): void {
-  for (let i = 0, len = data.length - 1; i < len; i++) {
-    let rightElement = data[i + 1];
-    data[i + 1] = data[i];
-    data[i] = rightElement;
-  }
+export function rotateArrayLeft(data: u8[]): void {
+  let first = data[0];
+  let lastIndex = data.length - 1;
+  for (let i = 0; i <= lastIndex; i++) data[i] = data[i + 1];
+  data[lastIndex] = first;
 }
 
 export function sleep(sleepTicks: i32): void {
   let lastTime = now();
   while (true) {
-    if (abs(lastTime - now()) > sleepTicks) return;
+    if (now() - lastTime > sleepTicks) return;
   }
 }
 

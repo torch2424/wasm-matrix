@@ -4254,59 +4254,53 @@
    unreachable
   end
  )
- (func $assembly/utils/rotateArrayRight (; 52 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/utils/rotateArrayLeft (; 52 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
+  local.get $0
+  i32.const 0
+  call $~lib/array/Array<u8>#__get
+  local.set $1
+  block $~lib/array/Array<u8>#get:length|inlined.0 (result i32)
+   local.get $0
+   local.set $2
+   local.get $2
+   i32.load offset=4
+  end
+  i32.const 1
+  i32.sub
+  local.set $2
   block $break|0
-   block
-    i32.const 0
-    local.set $1
-    block $~lib/array/Array<u8>#get:length|inlined.0 (result i32)
-     local.get $0
-     local.set $2
-     local.get $2
-     i32.load offset=4
-    end
-    i32.const 1
-    i32.sub
-    local.set $2
-   end
+   i32.const 0
+   local.set $3
    loop $repeat|0
-    local.get $1
+    local.get $3
     local.get $2
-    i32.lt_s
+    i32.le_s
     i32.eqz
     br_if $break|0
-    block
-     local.get $0
-     local.get $1
-     i32.const 1
-     i32.add
-     call $~lib/array/Array<u8>#__get
-     local.set $3
-     local.get $0
-     local.get $1
-     i32.const 1
-     i32.add
-     local.get $0
-     local.get $1
-     call $~lib/array/Array<u8>#__get
-     call $~lib/array/Array<u8>#__set
-     local.get $0
-     local.get $1
-     local.get $3
-     call $~lib/array/Array<u8>#__set
-    end
-    local.get $1
+    local.get $0
+    local.get $3
+    local.get $0
+    local.get $3
     i32.const 1
     i32.add
-    local.set $1
+    call $~lib/array/Array<u8>#__get
+    call $~lib/array/Array<u8>#__set
+    local.get $3
+    i32.const 1
+    i32.add
+    local.set $3
     br $repeat|0
     unreachable
    end
    unreachable
   end
+  local.get $0
+  local.get $2
+  local.get $1
+  call $~lib/array/Array<u8>#__set
  )
  (func $assembly/droplet/updateDroplet (; 53 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -4346,7 +4340,7 @@
     br_if $break|0
     local.get $0
     i32.load offset=8
-    call $assembly/utils/rotateArrayRight
+    call $assembly/utils/rotateArrayLeft
     local.get $3
     i32.const 1
     i32.add
@@ -4829,25 +4823,15 @@
  )
  (func $assembly/utils/sleep (; 64 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
   call $assembly/utils/now
   local.set $1
   block $break|0
    loop $continue|0
     i32.const 1
     if
-     local.get $1
      call $assembly/utils/now
+     local.get $1
      i32.sub
-     local.tee $2
-     i32.const 31
-     i32.shr_s
-     local.tee $3
-     local.get $2
-     i32.add
-     local.get $3
-     i32.xor
      local.get $0
      i32.gt_s
      if
