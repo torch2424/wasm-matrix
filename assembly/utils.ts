@@ -20,9 +20,7 @@ export function rotateArrayLeft(data: u8[]): void {
 
 export function sleep(sleepTicks: i32): void {
   let lastTime = now();
-  while (true) {
-    if (now() - lastTime > sleepTicks) return;
-  }
+  while (now() - lastTime <= sleepTicks);
 }
 
 // Recycle a time pointer to save memory

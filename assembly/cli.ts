@@ -23,8 +23,8 @@ export function showHelp(): void {
   printColor("FLAGS:", CYAN);
   Console.log("");
 
-  Console.log("-l, --lines " + REQUIRED);
-  Console.log("Number of " + "lines (rows)" + " to render the matrix");
+  Console.log("-l, --" + "lines " + REQUIRED);
+  Console.log("Number of " + "lines " + "(rows) " + "to render the matrix");
   Console.log(
     "Suggested: " +
       "$LINES" +
@@ -33,8 +33,8 @@ export function showHelp(): void {
   );
   Console.log("");
 
-  Console.log("-c, --columns " + REQUIRED);
-  Console.log("Number of " + "columns" + " to render the matrix");
+  Console.log("-c, --" + "columns " + REQUIRED);
+  Console.log("Number of " + "columns " + "to render the matrix");
   Console.log(
     "Suggested: " +
       "$COLUMNS" +
