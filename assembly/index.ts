@@ -70,13 +70,13 @@ export function _start(): void {
   // Create all of our droplets
   let droplets = new Array<Droplet>(columns);
   for (let i = 0; i < columns; i++) {
-    unchecked((droplets[i] = createDroplet(i, lines)));
+    droplets[i] = createDroplet(i, lines);
   }
 
   while (true) {
     // Update our droplets
     for (let i = 0; i < columns; i++) {
-      updateDroplet(unchecked(droplets[i]), lines);
+      updateDroplet(droplets[i], lines);
     }
 
     // Clear the screen
@@ -84,7 +84,7 @@ export function _start(): void {
 
     // Draw the droplets
     for (let i = 0; i < columns; i++) {
-      drawDroplet(unchecked(droplets[i]), lines);
+      drawDroplet(droplets[i], lines);
     }
 
     sleep(20 - speed);

@@ -12,10 +12,10 @@ export function randomByte(): i32 {
 }
 
 export function rotateArrayLeft(data: u8[]): void {
-  let first = unchecked(data[0]);
+  let first = data[0];
   let lastIndex = data.length - 1;
-  for (let i = 0; i <= lastIndex; i++) unchecked((data[i] = data[i + 1]));
-  unchecked((data[lastIndex] = first));
+  for (let i = 0; i <= lastIndex; i++) data[i] = data[i + 1];
+  data[lastIndex] = first;
 }
 
 export function sleep(sleepTicks: i32): void {

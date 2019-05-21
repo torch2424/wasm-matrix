@@ -17,7 +17,7 @@ export function showHelp(): void {
   printColor("USAGE:", CYAN);
   Console.log("");
 
-  Console.log("[wapm run] wasm-matrix -l " + "$LINES" + " -c" + "$COLUMNS");
+  Console.log("[wapm run] wasm-matrix -l " + "$LINES" + " -c " + "$COLUMNS");
   Console.log("");
 
   printColor("FLAGS:", CYAN);

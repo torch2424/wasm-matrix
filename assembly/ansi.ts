@@ -14,13 +14,13 @@ export const CYAN = "\u001b[36m";
 export const RESET = "\u001b[0m";
 
 // Ansi Cursor Codes
-export const HIDE_CURSOR = "\u001b[?25l";
+// export const HIDE_CURSOR = "\u001b[?25l"; // actually hide cursor
+export const HIDE_CURSOR = "\u001b[?25h";
 
 export function printColor(value: string, color: string): void {
   Console.write(color + value + RESET, false);
 }
 
-@inline
 export function flushConsole(): void {
   Console.write(FLUSH, false);
 }

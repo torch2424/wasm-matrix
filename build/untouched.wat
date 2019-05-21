@@ -25,7 +25,7 @@
  (data (i32.const 64) "\05\00\00\00\1b\00[\003\001\00m\00")
  (data (i32.const 80) "\05\00\00\00\1b\00[\003\006\00m\00")
  (data (i32.const 96) "\04\00\00\00\1b\00[\000\00m\00")
- (data (i32.const 112) "\06\00\00\00\1b\00[\00?\002\005\00l\00")
+ (data (i32.const 112) "\06\00\00\00\1b\00[\00?\002\005\00h\00")
  (data (i32.const 128) "\00\00\00\00\00\00\00\00")
  (data (i32.const 136) "\80\00\00\00\00\00\00\00")
  (data (i32.const 144) "\00\00\00\00")
@@ -39,7 +39,7 @@
  (data (i32.const 408) "\06\00\00\00U\00S\00A\00G\00E\00:\00")
  (data (i32.const 424) "\1a\00\00\00[\00w\00a\00p\00m\00 \00r\00u\00n\00]\00 \00w\00a\00s\00m\00-\00m\00a\00t\00r\00i\00x\00 \00-\00l\00 \00")
  (data (i32.const 480) "\06\00\00\00$\00L\00I\00N\00E\00S\00")
- (data (i32.const 496) "\03\00\00\00 \00-\00c\00")
+ (data (i32.const 496) "\04\00\00\00 \00-\00c\00 \00")
  (data (i32.const 512) "\08\00\00\00$\00C\00O\00L\00U\00M\00N\00S\00")
  (data (i32.const 536) "\06\00\00\00F\00L\00A\00G\00S\00:\00")
  (data (i32.const 552) "\06\00\00\00-\00l\00,\00 \00-\00-\00")
@@ -4363,57 +4363,78 @@
   local.get $0
   i32.add
  )
- (func $~lib/array/Array<u8>#__unchecked_set (; 53 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $0
-  i32.load
-  local.set $3
-  local.get $1
-  local.set $4
-  local.get $2
-  local.set $5
-  i32.const 0
-  local.set $6
-  local.get $3
-  local.get $4
-  i32.const 0
-  i32.shl
-  i32.add
-  local.get $6
-  i32.add
-  local.get $5
-  i32.store8 offset=8
- )
- (func $~lib/array/Array<u8>#__unchecked_get (; 54 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  local.get $0
-  i32.load
-  local.set $2
-  local.get $1
-  local.set $3
-  i32.const 0
-  local.set $4
-  local.get $2
-  local.get $3
-  i32.const 0
-  i32.shl
-  i32.add
-  local.get $4
-  i32.add
-  i32.load8_u offset=8
- )
- (func $assembly/droplet/createDroplet (; 55 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $~lib/array/Array<u8>#__set (; 53 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
   (local $7 i32)
+  (local $8 i32)
+  local.get $0
+  i32.load
+  local.set $3
+  local.get $3
+  i32.load
+  i32.const 0
+  i32.shr_u
+  local.set $4
+  local.get $1
+  local.get $4
+  i32.ge_u
+  if
+   local.get $1
+   i32.const 1073741816
+   i32.ge_u
+   if
+    i32.const 0
+    i32.const 240
+    i32.const 107
+    i32.const 41
+    call $assembly/env/wasiabort
+    unreachable
+   end
+   local.get $3
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.const 0
+   i32.shl
+   call $~lib/internal/arraybuffer/reallocateUnsafe
+   local.set $3
+   local.get $0
+   local.get $3
+   i32.store
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.store offset=4
+  end
+  block $~lib/internal/arraybuffer/STORE<u8,u8>|inlined.0
+   local.get $3
+   local.set $5
+   local.get $1
+   local.set $6
+   local.get $2
+   local.set $7
+   i32.const 0
+   local.set $8
+   local.get $5
+   local.get $6
+   i32.const 0
+   i32.shl
+   i32.add
+   local.get $8
+   i32.add
+   local.get $7
+   i32.store8 offset=8
+  end
+ )
+ (func $assembly/droplet/createDroplet (; 54 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
   i32.const 0
   call $assembly/droplet/Droplet#constructor
   local.set $2
@@ -4456,20 +4477,12 @@
     i32.lt_s
     i32.eqz
     br_if $break|0
-    block (result i32)
-     local.get $4
-     local.tee $6
-     local.get $5
-     local.tee $7
-     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_START
-     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_END
-     call $assembly/characters/getRandomCharacterCode
-     call $~lib/array/Array<u8>#__unchecked_set
-     local.get $6
-     local.get $7
-     call $~lib/array/Array<u8>#__unchecked_get
-    end
-    drop
+    local.get $4
+    local.get $5
+    global.get $assembly/characters/ENGLISH_CHARACTER_CODE_START
+    global.get $assembly/characters/ENGLISH_CHARACTER_CODE_END
+    call $assembly/characters/getRandomCharacterCode
+    call $~lib/array/Array<u8>#__set
     local.get $5
     i32.const 1
     i32.add
@@ -4484,59 +4497,146 @@
   i32.store offset=8
   local.get $2
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_set (; 56 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#__set (; 55 ;) (type $FUNCSIG$viii) (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
   local.get $0
   i32.load
   local.set $3
-  local.get $1
-  local.set $4
-  local.get $2
-  local.set $5
-  i32.const 0
-  local.set $6
   local.get $3
-  local.get $4
+  i32.load
   i32.const 2
-  i32.shl
-  i32.add
-  local.get $6
-  i32.add
-  local.get $5
-  i32.store offset=8
+  i32.shr_u
+  local.set $4
+  local.get $1
+  local.get $4
+  i32.ge_u
+  if
+   local.get $1
+   i32.const 268435454
+   i32.ge_u
+   if
+    i32.const 0
+    i32.const 240
+    i32.const 107
+    i32.const 41
+    call $assembly/env/wasiabort
+    unreachable
+   end
+   local.get $3
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.shl
+   call $~lib/internal/arraybuffer/reallocateUnsafe
+   local.set $3
+   local.get $0
+   local.get $3
+   i32.store
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.store offset=4
+  end
+  block $~lib/internal/arraybuffer/STORE<assembly/droplet/Droplet,assembly/droplet/Droplet>|inlined.0
+   local.get $3
+   local.set $5
+   local.get $1
+   local.set $6
+   local.get $2
+   local.set $7
+   i32.const 0
+   local.set $8
+   local.get $5
+   local.get $6
+   i32.const 2
+   i32.shl
+   i32.add
+   local.get $8
+   i32.add
+   local.get $7
+   i32.store offset=8
+  end
  )
- (func $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_get (; 57 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<assembly/droplet/Droplet>#__get (; 56 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
+  (local $5 i32)
   local.get $0
   i32.load
   local.set $2
   local.get $1
-  local.set $3
-  i32.const 0
-  local.set $4
   local.get $2
-  local.get $3
+  i32.load
   i32.const 2
-  i32.shl
-  i32.add
-  local.get $4
-  i32.add
-  i32.load offset=8
+  i32.shr_u
+  i32.lt_u
+  if (result i32)
+   local.get $2
+   local.set $3
+   local.get $1
+   local.set $4
+   i32.const 0
+   local.set $5
+   local.get $3
+   local.get $4
+   i32.const 2
+   i32.shl
+   i32.add
+   local.get $5
+   i32.add
+   i32.load offset=8
+  else   
+   unreachable
+  end
+ )
+ (func $~lib/array/Array<u8>#__get (; 57 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  local.get $0
+  i32.load
+  local.set $2
+  local.get $1
+  local.get $2
+  i32.load
+  i32.const 0
+  i32.shr_u
+  i32.lt_u
+  if (result i32)
+   local.get $2
+   local.set $3
+   local.get $1
+   local.set $4
+   i32.const 0
+   local.set $5
+   local.get $3
+   local.get $4
+   i32.const 0
+   i32.shl
+   i32.add
+   local.get $5
+   i32.add
+   i32.load8_u offset=8
+  else   
+   unreachable
+  end
  )
  (func $assembly/utils/rotateArrayLeft (; 58 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
   local.get $0
   i32.const 0
-  call $~lib/array/Array<u8>#__unchecked_get
+  call $~lib/array/Array<u8>#__get
   local.set $1
   block $~lib/array/Array<u8>#get:length|inlined.0 (result i32)
    local.get $0
@@ -4556,22 +4656,14 @@
     i32.le_s
     i32.eqz
     br_if $break|0
-    block (result i32)
-     local.get $0
-     local.tee $4
-     local.get $3
-     local.tee $5
-     local.get $0
-     local.get $3
-     i32.const 1
-     i32.add
-     call $~lib/array/Array<u8>#__unchecked_get
-     call $~lib/array/Array<u8>#__unchecked_set
-     local.get $4
-     local.get $5
-     call $~lib/array/Array<u8>#__unchecked_get
-    end
-    drop
+    local.get $0
+    local.get $3
+    local.get $0
+    local.get $3
+    i32.const 1
+    i32.add
+    call $~lib/array/Array<u8>#__get
+    call $~lib/array/Array<u8>#__set
     local.get $3
     i32.const 1
     i32.add
@@ -4581,18 +4673,10 @@
    end
    unreachable
   end
-  block (result i32)
-   local.get $0
-   local.tee $3
-   local.get $2
-   local.tee $4
-   local.get $1
-   call $~lib/array/Array<u8>#__unchecked_set
-   local.get $3
-   local.get $4
-   call $~lib/array/Array<u8>#__unchecked_get
-  end
-  drop
+  local.get $0
+  local.get $2
+  local.get $1
+  call $~lib/array/Array<u8>#__set
  )
  (func $assembly/droplet/updateDroplet (; 59 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -4600,8 +4684,6 @@
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   local.get $0
   i32.load offset=12
   local.set $2
@@ -4661,20 +4743,12 @@
     i32.lt_s
     i32.eqz
     br_if $break|1
-    block (result i32)
-     local.get $5
-     local.tee $7
-     local.get $6
-     local.tee $8
-     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_START
-     global.get $assembly/characters/ENGLISH_CHARACTER_CODE_END
-     call $assembly/characters/getRandomCharacterCode
-     call $~lib/array/Array<u8>#__unchecked_set
-     local.get $7
-     local.get $8
-     call $~lib/array/Array<u8>#__unchecked_get
-    end
-    drop
+    local.get $5
+    local.get $6
+    global.get $assembly/characters/ENGLISH_CHARACTER_CODE_START
+    global.get $assembly/characters/ENGLISH_CHARACTER_CODE_END
+    call $assembly/characters/getRandomCharacterCode
+    call $~lib/array/Array<u8>#__set
     local.get $6
     i32.const 1
     i32.add
@@ -4685,7 +4759,12 @@
    unreachable
   end
  )
- (func $assembly/ansi/moveCursorToPosition (; 60 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/ansi/flushConsole (; 60 ;) (type $FUNCSIG$v)
+  global.get $assembly/ansi/FLUSH
+  i32.const 0
+  call $assembly/wasa/Console.write
+ )
+ (func $assembly/ansi/moveCursorToPosition (; 61 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   global.get $assembly/ansi/ESC
   local.get $1
@@ -4706,7 +4785,7 @@
   i32.const 0
   call $assembly/wasa/Console.write
  )
- (func $~lib/string/String.fromCharCode (; 61 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
+ (func $~lib/string/String.fromCharCode (; 62 ;) (type $FUNCSIG$ii) (param $0 i32) (result i32)
   (local $1 i32)
   i32.const 1
   call $~lib/internal/string/allocateUnsafe
@@ -4716,7 +4795,7 @@
   i32.store16 offset=4
   local.get $1
  )
- (func $assembly/droplet/drawDroplet (; 62 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/droplet/drawDroplet (; 63 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -4778,7 +4857,7 @@
       local.set $6
       local.get $2
       local.get $3
-      call $~lib/array/Array<u8>#__unchecked_get
+      call $~lib/array/Array<u8>#__get
       i32.const 255
       i32.and
       call $~lib/string/String.fromCharCode
@@ -4796,7 +4875,7 @@
    unreachable
   end
  )
- (func $assembly/utils/now (; 63 ;) (type $FUNCSIG$i) (result i32)
+ (func $assembly/utils/now (; 64 ;) (type $FUNCSIG$i) (result i32)
   (local $0 i64)
   i32.const 0
   i64.const 1000
@@ -4811,7 +4890,7 @@
   i64.div_u
   i32.wrap_i64
  )
- (func $assembly/utils/sleep (; 64 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $assembly/utils/sleep (; 65 ;) (type $FUNCSIG$vi) (param $0 i32)
   (local $1 i32)
   call $assembly/utils/now
   local.set $1
@@ -4829,7 +4908,7 @@
    end
   end
  )
- (func $assembly/index/_start (; 65 ;) (type $FUNCSIG$v)
+ (func $assembly/index/_start (; 66 ;) (type $FUNCSIG$v)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
@@ -5050,20 +5129,12 @@
     i32.lt_s
     i32.eqz
     br_if $break|1
-    block (result i32)
-     local.get $6
-     local.tee $7
-     local.get $5
-     local.tee $8
-     local.get $5
-     local.get $1
-     call $assembly/droplet/createDroplet
-     call $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_set
-     local.get $7
-     local.get $8
-     call $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_get
-    end
-    drop
+    local.get $6
+    local.get $5
+    local.get $5
+    local.get $1
+    call $assembly/droplet/createDroplet
+    call $~lib/array/Array<assembly/droplet/Droplet>#__set
     local.get $5
     i32.const 1
     i32.add
@@ -5089,7 +5160,7 @@
         br_if $break|3
         local.get $6
         local.get $5
-        call $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_get
+        call $~lib/array/Array<assembly/droplet/Droplet>#__get
         local.get $1
         call $assembly/droplet/updateDroplet
         local.get $5
@@ -5101,11 +5172,7 @@
        end
        unreachable
       end
-      block $assembly/ansi/flushConsole|inlined.0
-       global.get $assembly/ansi/FLUSH
-       i32.const 0
-       call $assembly/wasa/Console.write
-      end
+      call $assembly/ansi/flushConsole
       block $break|4
        i32.const 0
        local.set $5
@@ -5117,7 +5184,7 @@
         br_if $break|4
         local.get $6
         local.get $5
-        call $~lib/array/Array<assembly/droplet/Droplet>#__unchecked_get
+        call $~lib/array/Array<assembly/droplet/Droplet>#__get
         local.get $1
         call $assembly/droplet/drawDroplet
         local.get $5
@@ -5139,12 +5206,12 @@
    end
   end
  )
- (func $start (; 66 ;) (type $FUNCSIG$v)
+ (func $start (; 67 ;) (type $FUNCSIG$v)
   call $start:assembly/index
  )
- (func $null (; 67 ;) (type $FUNCSIG$v)
+ (func $null (; 68 ;) (type $FUNCSIG$v)
  )
- (func $assembly/env/wasiabort|trampoline (; 68 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+ (func $assembly/env/wasiabort|trampoline (; 69 ;) (type $FUNCSIG$viiii) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
   block $4of4
    block $3of4
     block $2of4
@@ -5174,7 +5241,7 @@
   local.get $3
   call $assembly/env/wasiabort
  )
- (func $~lib/setargc (; 69 ;) (type $FUNCSIG$vi) (param $0 i32)
+ (func $~lib/setargc (; 70 ;) (type $FUNCSIG$vi) (param $0 i32)
   local.get $0
   global.set $~lib/argc
  )
