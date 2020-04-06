@@ -20,46 +20,45 @@ import { CommandLine } from "./wasa";
 // https://github.com/WebAssembly/WASI/issues/19
 export function _start(): void {
   // Set to the default linux terminal size
-  let columns: i32 = 80;
-  let lines: i32 = 24;
+  let columns = 80;
+  let lines = 24;
 
   // Set to the default speed
-  let speed: i32 = 10;
+  let speed = 10;
 
   // Parse command line arguments
   let commandLine = new CommandLine();
-  let args: Array<string> = commandLine.all();
+  let args = commandLine.all() as string[];
 
   if (args.length <= 1) {
     showHelp();
     return;
   }
 
-  for (let i = 0; i < args.length; i++) {
-    let arg: string = args[i];
-
+  for (let i = 0, len = args.length; i < len; i++) {
+    let arg = unchecked(args[i]);
     if (arg == "-l" || arg == "--lines") {
       lines = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (lines < 1) {
-        printColor("Please enter a lines greater than zero", RED);
+        printColor("Please enter a " + "lines" + " greater than zero", RED);
         return;
       }
     } else if (arg == "-c" || arg == "--columns") {
       columns = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (columns < 1) {
-        printColor("Please enter a column greater than zero", RED);
+        printColor("Please enter a " + "column" + " greater than zero", RED);
         return;
       }
     } else if (arg == "-s" || arg == "--speed") {
       speed = parseInt(args[i + 1]) as i32;
-      i++;
+      ++i;
 
       if (speed < 1 || speed > 20) {
-        printColor("Please enter a speed >=1 and <= 20", RED);
+        printColor("Please enter a " + "speed >=1 and <= 20", RED);
         return;
       }
     } else if (arg == "-h" || arg == "--help") {
@@ -69,14 +68,14 @@ export function _start(): void {
   }
 
   // Create all of our droplets
-  const droplets: Droplet[] = new Array<Droplet>(columns);
+  let droplets = new Array<Droplet>(columns);
   for (let i = 0; i < columns; i++) {
     droplets[i] = createDroplet(i, lines);
   }
 
   while (true) {
     // Update our droplets
-    for (let i = 0; i < droplets.length; i++) {
+    for (let i = 0; i < columns; i++) {
       updateDroplet(droplets[i], lines);
     }
 
@@ -84,7 +83,7 @@ export function _start(): void {
     flushConsole();
 
     // Draw the droplets
-    for (let i = 0; i < droplets.length; i++) {
+    for (let i = 0; i < columns; i++) {
       drawDroplet(droplets[i], lines);
     }
 
